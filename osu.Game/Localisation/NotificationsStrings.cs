@@ -272,6 +272,41 @@ Click to see what's new!", version);
         /// </summary>
         public static LocalisableString CollectionBeatmapsAdded(string name, int beatmapsCount) => new TranslatableString(getKey(@"collection_beatmaps_added"), @"Added {0} beatmaps to collection ""{1}"".", beatmapsCount, name);
 
+        /// <summary>
+        /// "Play in this state is not permitted."
+        /// </summary>
+        public static LocalisableString SubmittingPlayStateNotPermitted => new TranslatableString(getKey(@"submitting_play_state_not_permitted"), @"Play in this state is not permitted.");
+
+        /// <summary>
+        /// "Your score will not be submitted."
+        /// </summary>
+        public static LocalisableString SubmittingScoreWillNotBeSubmitted => new TranslatableString(getKey(@"submitting_score_will_not_be_submitted"), @"Your score will not be submitted.");
+
+        /// <summary>
+        /// "Failed to retrieve a score submission token."
+        /// </summary>
+        public static LocalisableString SubmittingFailedToRetrieveSubmissionToken => new TranslatableString(getKey(@"submitting_failed_to_retrieve_submission_token"), @"Failed to retrieve a score submission token.");
+
+        /// <summary>
+        /// "Score was not submitted (id: {0})"
+        /// </summary>
+        public static LocalisableString SubmittingScoreWasNotSubmitted(long id) => new TranslatableString(getKey(@"submitting_score_was_not_submitted"), @"Score was not submitted (id: {0})", id);
+
+        /// <summary>
+        /// "Please ensure that you are using the latest version of the official game releases."
+        /// </summary>
+        public static LocalisableString SubmittingOutdatedClient => new TranslatableString(getKey(@"submitting_outdated_client"), @"Please ensure that you are using the latest version of the official game releases.");
+
+        /// <summary>
+        /// "This beatmap does not match the online version. Please update or redownload it."
+        /// </summary>
+        public static LocalisableString SubmittingInvalidBeatmapHash => new TranslatableString(getKey(@"submitting_invalid_hash"), @"This beatmap does not match the online version. Please update or redownload it.");
+
+        /// <summary>
+        /// "Your system clock is set incorrectly. Please check your system time, date and timezone."
+        /// </summary>
+        public static LocalisableString SubmittingExpiredToken => new TranslatableString(getKey(@"submitting_expired_token"), @"Your system clock is set incorrectly. Please check your system time, date and timezone.");
+
         private static string getKey(string key) => $@"{prefix}:{key}";
     }
 }
