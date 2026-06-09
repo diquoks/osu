@@ -49,6 +49,21 @@ namespace osu.Game.Localisation
         /// </summary>
         public static LocalisableString MatchIsReady => new TranslatableString(getKey(@"match_is_ready"), @"Your match is ready! Click to join.");
 
+        /// <summary>
+        /// "Move to slot"
+        /// </summary>
+        public static LocalisableString MoveToSlot => new TranslatableString(getKey(@"move_to_slot"), @"Move to slot");
+
+        /// <summary>
+        /// "Give host"
+        /// </summary>
+        public static LocalisableString GiveHost => new TranslatableString(getKey(@"give_host"), @"Give host");
+
+        /// <summary>
+        /// "Kick"
+        /// </summary>
+        public static LocalisableString Kick => new TranslatableString(getKey(@"kick"), @"Kick");
+
         private static string getKey(string key) => $@"{prefix}:{key}";
     }
 }

@@ -234,6 +234,36 @@ namespace osu.Game.Localisation
         /// </summary>
         public static LocalisableString RulesetNotSupportSaving => new TranslatableString(getKey(@"ruleset_not_support_saving"), @"Saving is not supported for this ruleset yet, sorry!");
 
+        /// <summary>
+        /// "New combo"
+        /// </summary>
+        public static LocalisableString NewCombo => new TranslatableString(getKey(@"new_combo"), @"New combo");
+
+        /// <summary>
+        /// "Sample"
+        /// </summary>
+        public static LocalisableString Sample => new TranslatableString(getKey(@"sample"), @"Sample");
+
+        /// <summary>
+        /// "Sample Set"
+        /// </summary>
+        public static LocalisableString SampleSet => new TranslatableString(getKey(@"sample_set"), @"Sample Set");
+
+        /// <summary>
+        /// "Bank"
+        /// </summary>
+        public static LocalisableString Bank => new TranslatableString(getKey(@"bank"), @"Bank");
+
+        /// <summary>
+        /// "Normal Bank"
+        /// </summary>
+        public static LocalisableString NormalBank => new TranslatableString(getKey(@"normal_bank"), @"Normal Bank");
+
+        /// <summary>
+        /// "Addition Bank"
+        /// </summary>
+        public static LocalisableString AdditionBank => new TranslatableString(getKey(@"addition_bank"), @"Addition Bank");
+
         private static string getKey(string key) => $@"{prefix}:{key}";
     }
 }
