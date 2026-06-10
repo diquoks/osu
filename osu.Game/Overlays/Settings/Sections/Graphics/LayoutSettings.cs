@@ -464,16 +464,16 @@ namespace osu.Game.Overlays.Settings.Sections.Graphics
                 switch (item)
                 {
                     case WindowMode.Windowed:
-                        return GraphicsSettingsStrings.ScreenModeWindowed;
+                        return GraphicsSettingsStrings.WindowedScreenMode;
 
                     case WindowMode.Borderless:
-                        return GraphicsSettingsStrings.ScreenModeBorderless;
+                        return GraphicsSettingsStrings.BorderlessScreenMode;
 
                     case WindowMode.Fullscreen:
-                        return GraphicsSettingsStrings.ScreenModeFullscreen;
+                        return GraphicsSettingsStrings.FullscreenScreenMode;
 
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        return base.GenerateItemText(item);
                 }
             }
         }

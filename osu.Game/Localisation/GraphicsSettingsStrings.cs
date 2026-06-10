@@ -27,17 +27,17 @@ namespace osu.Game.Localisation
         /// <summary>
         /// "Automatic"
         /// </summary>
-        public static LocalisableString RendererAutomatic => new TranslatableString(getKey(@"renderer_automatic"), @"Automatic");
+        public static LocalisableString AutomaticRenderer => new TranslatableString(getKey(@"automatic_renderer"), @"Automatic");
 
         /// <summary>
         /// "Automatic ({0})"
         /// </summary>
-        public static LocalisableString RendererAutomaticInUse(LocalisableString rendererName) => new TranslatableString(getKey(@"renderer_automatic_in_use"), @"Automatic ({0})", rendererName);
+        public static LocalisableString AutomaticRendererInUse(LocalisableString rendererName) => new TranslatableString(getKey(@"automatic_renderer_in_use"), @"Automatic ({0})", rendererName);
 
         /// <summary>
         /// "{0} (Experimental)"
         /// </summary>
-        public static LocalisableString RendererExperimental(LocalisableString rendererName) => new TranslatableString(getKey(@"renderer_experimental"), @"{0} (Experimental)", rendererName);
+        public static LocalisableString ExperimentalRenderer(LocalisableString rendererName) => new TranslatableString(getKey(@"experimental_renderer"), @"{0} (Experimental)", rendererName);
 
         /// <summary>
         /// "Frame limiter"
@@ -47,17 +47,17 @@ namespace osu.Game.Localisation
         /// <summary>
         /// "VSync"
         /// </summary>
-        public static LocalisableString FrameLimiterVSync => new TranslatableString(getKey(@"frame_limiter_vsync"), @"VSync");
+        public static LocalisableString VSyncFrameLimiter => new TranslatableString(getKey(@"vsync_frame_limiter"), @"VSync");
 
         /// <summary>
         /// "{0}x refresh rate"
         /// </summary>
-        public static LocalisableString FrameLimiterMultiplier(int multiplier) => new TranslatableString(getKey(@"frame_limiter_multiplier"), @"{0}x refresh rate", multiplier);
+        public static LocalisableString RefreshRateMultiplierFrameLimiter(int multiplier) => new TranslatableString(getKey(@"refresh_rate_multiplier_frame_limiter"), @"{0}x refresh rate", multiplier);
 
         /// <summary>
         /// "Basically unlimited"
         /// </summary>
-        public static LocalisableString FrameLimiterUnlimited => new TranslatableString(getKey(@"frame_limiter_unlimited"), @"Basically unlimited");
+        public static LocalisableString UnlimitedFrameLimiter => new TranslatableString(getKey(@"unlimited_frame_limiter"), @"Basically unlimited");
 
         /// <summary>
         /// "Threading mode"
@@ -67,12 +67,12 @@ namespace osu.Game.Localisation
         /// <summary>
         /// "Single thread"
         /// </summary>
-        public static LocalisableString ThreadingModeSingleThread => new TranslatableString(getKey(@"threading_mode_single_thread"), @"Single thread");
+        public static LocalisableString SingleThreadThreadingMode => new TranslatableString(getKey(@"single_thread_threading_mode"), @"Single thread");
 
         /// <summary>
         /// "Multithreaded"
         /// </summary>
-        public static LocalisableString ThreadingModeMultiThreaded => new TranslatableString(getKey(@"threading_mode_multi_threaded"), @"Multithreaded");
+        public static LocalisableString MultithreadedThreadingMode => new TranslatableString(getKey(@"multithreaded_threading_mode"), @"Multithreaded");
 
         /// <summary>
         /// "Show FPS"
@@ -92,17 +92,17 @@ namespace osu.Game.Localisation
         /// <summary>
         /// "Windowed"
         /// </summary>
-        public static LocalisableString ScreenModeWindowed => new TranslatableString(getKey(@"screen_mode_windowed"), @"Windowed");
+        public static LocalisableString WindowedScreenMode => new TranslatableString(getKey(@"windowed_screen_mode"), @"Windowed");
 
         /// <summary>
         /// "Borderless"
         /// </summary>
-        public static LocalisableString ScreenModeBorderless => new TranslatableString(getKey(@"screen_mode_borderless"), @"Borderless");
+        public static LocalisableString BorderlessScreenMode => new TranslatableString(getKey(@"borderless_screen_mode"), @"Borderless");
 
         /// <summary>
         /// "Fullscreen"
         /// </summary>
-        public static LocalisableString ScreenModeFullscreen => new TranslatableString(getKey(@"screen_mode_fullscreen"), @"Fullscreen");
+        public static LocalisableString FullscreenScreenMode => new TranslatableString(getKey(@"fullscreen_screen_mode"), @"Fullscreen");
 
         /// <summary>
         /// "Resolution"

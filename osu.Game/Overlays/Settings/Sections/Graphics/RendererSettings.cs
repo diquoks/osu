@@ -1,12 +1,10 @@
 ﻿// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the MIT Licence.
 // See the LICENCE file in the repository root for full licence text.
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using osu.Framework.Allocation;
 using osu.Framework.Configuration;
-using osu.Framework.Extensions;
 using osu.Framework.Graphics;
 using osu.Framework.Localisation;
 using osu.Framework.Platform;
@@ -114,26 +112,26 @@ namespace osu.Game.Overlays.Settings.Sections.Graphics
                 switch (item)
                 {
                     case RendererType.Automatic:
-                        // `hostResolvedRenderer != RendererType.Automatic` is used here to prevent recursion (I don't think it's possible at all, but just in case)
+                        // `hostResolvedRenderer != RendererType.Automatic` needed here to prevent recursion (I don't think it's possible at all, but just to be sure)
                         if (automaticRendererInUse && hostResolvedRenderer != RendererType.Automatic)
-                            return GraphicsSettingsStrings.RendererAutomaticInUse(GenerateItemText(hostResolvedRenderer));
+                            return GraphicsSettingsStrings.AutomaticRendererInUse(GenerateItemText(hostResolvedRenderer));
 
-                        return GraphicsSettingsStrings.RendererAutomatic;
+                        return GraphicsSettingsStrings.AutomaticRenderer;
 
                     case RendererType.Deferred_Metal:
-                        return GraphicsSettingsStrings.RendererExperimental(GenerateItemText(RendererType.Metal));
+                        return GraphicsSettingsStrings.ExperimentalRenderer(GenerateItemText(RendererType.Metal));
 
                     case RendererType.Deferred_Vulkan:
-                        return GraphicsSettingsStrings.RendererExperimental(GenerateItemText(RendererType.Vulkan));
+                        return GraphicsSettingsStrings.ExperimentalRenderer(GenerateItemText(RendererType.Vulkan));
 
                     case RendererType.Deferred_Direct3D11:
-                        return GraphicsSettingsStrings.RendererExperimental(GenerateItemText(RendererType.Direct3D11));
+                        return GraphicsSettingsStrings.ExperimentalRenderer(GenerateItemText(RendererType.Direct3D11));
 
                     case RendererType.Deferred_OpenGL:
-                        return GraphicsSettingsStrings.RendererExperimental(GenerateItemText(RendererType.OpenGL));
+                        return GraphicsSettingsStrings.ExperimentalRenderer(GenerateItemText(RendererType.OpenGL));
 
                     default:
-                        return item.GetDescription();
+                        return base.GenerateItemText(item);
                 }
             }
         }
@@ -145,22 +143,22 @@ namespace osu.Game.Overlays.Settings.Sections.Graphics
                 switch (item)
                 {
                     case FrameSync.VSync:
-                        return GraphicsSettingsStrings.FrameLimiterVSync;
+                        return GraphicsSettingsStrings.VSyncFrameLimiter;
 
                     case FrameSync.Limit2x:
-                        return GraphicsSettingsStrings.FrameLimiterMultiplier(2);
+                        return GraphicsSettingsStrings.RefreshRateMultiplierFrameLimiter(2);
 
                     case FrameSync.Limit4x:
-                        return GraphicsSettingsStrings.FrameLimiterMultiplier(4);
+                        return GraphicsSettingsStrings.RefreshRateMultiplierFrameLimiter(4);
 
                     case FrameSync.Limit8x:
-                        return GraphicsSettingsStrings.FrameLimiterMultiplier(8);
+                        return GraphicsSettingsStrings.RefreshRateMultiplierFrameLimiter(8);
 
                     case FrameSync.Unlimited:
-                        return GraphicsSettingsStrings.FrameLimiterUnlimited;
+                        return GraphicsSettingsStrings.UnlimitedFrameLimiter;
 
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        return base.GenerateItemText(item);
                 }
             }
         }
@@ -172,13 +170,13 @@ namespace osu.Game.Overlays.Settings.Sections.Graphics
                 switch (item)
                 {
                     case ExecutionMode.SingleThread:
-                        return GraphicsSettingsStrings.ThreadingModeSingleThread;
+                        return GraphicsSettingsStrings.SingleThreadThreadingMode;
 
                     case ExecutionMode.MultiThreaded:
-                        return GraphicsSettingsStrings.ThreadingModeMultiThreaded;
+                        return GraphicsSettingsStrings.MultithreadedThreadingMode;
 
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        return base.GenerateItemText(item);
                 }
             }
         }
