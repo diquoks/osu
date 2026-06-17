@@ -12,6 +12,8 @@ using osu.Game.Online.API.Requests;
 using osu.Game.Online.API.Requests.Responses;
 using osu.Game.Online.Chat;
 using osu.Game.Online.Notifications.WebSocket;
+using osu.Game.Online.Rooms;
+using osu.Game.Online.Solo;
 using osu.Game.Tests;
 
 namespace osu.Game.Online.API
@@ -82,6 +84,10 @@ namespace osu.Game.Online.API
                         ack.TriggerSuccess(new ChatAckResponse());
                         return;
                     }
+
+                    // Unnecessary notifications interfere with tests in `TestScenePlayerLoader`.
+                    if (request is CreateSoloScoreRequest createSoloScore)
+                        createSoloScore.TriggerSuccess(new APIScoreToken { ID = 1234 });
 
                     request.Fail(new InvalidOperationException($@"{nameof(DummyAPIAccess)} cannot process this request."));
                 }
