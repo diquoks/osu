@@ -307,6 +307,126 @@ Click to see what's new!", version);
         /// </summary>
         public static LocalisableString SubmittingExpiredToken => new TranslatableString(getKey(@"submitting_expired_token"), @"Your system clock is set incorrectly. Please check your system time, date and timezone.");
 
+        /// <summary>
+        /// "Preparing to delete all beatmap videos..."
+        /// </summary>
+        public static LocalisableString PreparingToDeleteAllBeatmapVideos => new TranslatableString(getKey(@"preparing_to_delete_all_beatmap_videos"), @"Preparing to delete all beatmap videos...");
+
+        /// <summary>
+        /// "Deleted {0} beatmap video!|Deleted {0} beatmap videos!"
+        /// </summary>
+        public static LocalisableString DeletedBeatmapVideos(int deletedCount) => new PluralisableString(new TranslatableString(getKey(@"deleted_beatmap_videos"), @"Deleted {0} beatmap video!|Deleted {0} beatmap videos!", deletedCount), deletedCount, '|');
+
+        /// <summary>
+        /// "Deleting videos from beatmaps ({0} deleted)"
+        /// </summary>
+        public static LocalisableString DeletingVideosFromBeatmap(int deletedCount) => new TranslatableString(getKey(@"deleting_videos_from_beatmap"), @"Deleting videos from beatmaps ({0} deleted)", deletedCount);
+
+        /// <summary>
+        /// "No beatmaps found to delete!"
+        /// </summary>
+        public static LocalisableString NoBeatmapsFoundToDelete => new TranslatableString(getKey(@"no_beatmaps_found_to_delete"), @"No beatmaps found to delete!");
+
+        /// <summary>
+        /// "Preparing to delete all beatmaps..."
+        /// </summary>
+        public static LocalisableString PreparingToDeleteAllBeatmaps => new TranslatableString(getKey(@"preparing_to_delete_all_beatmaps"), @"Preparing to delete all beatmaps...");
+
+        /// <summary>
+        /// "Deleted all beatmaps!"
+        /// </summary>
+        public static LocalisableString DeletedAllBeatmaps => new TranslatableString(getKey(@"deleted_all_beatmaps"), @"Deleted all beatmaps!");
+
+        /// <summary>
+        /// "Deleting beatmaps ({0} of {1})"
+        /// </summary>
+        public static LocalisableString DeletingBeatmaps(int deletedCount, int totalCount) => new TranslatableString(getKey(@"deleting_beatmaps"), @"Deleting beatmaps ({0} of {1})", deletedCount, totalCount);
+
+        /// <summary>
+        /// "No beatmaps found to restore!"
+        /// </summary>
+        public static LocalisableString NoBeatmapsFoundToRestore => new TranslatableString(getKey(@"no_beatmaps_found_to_restore"), @"No beatmaps found to restore!");
+
+        /// <summary>
+        /// "Restored all deleted beatmaps!"
+        /// </summary>
+        public static LocalisableString RestoredAllDeletedBeatmaps => new TranslatableString(getKey(@"restored_all_deleted_beatmaps"), @"Restored all deleted beatmaps!");
+
+        /// <summary>
+        /// "Restoring deleted beatmaps ({0} of {1})"
+        /// </summary>
+        public static LocalisableString RestoringDeletedBeatmaps(int restoredCount, int totalCount) => new TranslatableString(getKey(@"restoring_deleted_beatmaps"), @"Restoring deleted beatmaps ({0} of {1})", restoredCount, totalCount);
+
+        /// <summary>
+        /// "No scores found to delete!"
+        /// </summary>
+        public static LocalisableString NoScoresFoundToDelete => new TranslatableString(getKey(@"no_scores_found_to_delete"), @"No scores found to delete!");
+
+        /// <summary>
+        /// "Preparing to delete all scores..."
+        /// </summary>
+        public static LocalisableString PreparingToDeleteAllScores => new TranslatableString(getKey(@"preparing_to_delete_all_scores"), @"Preparing to delete all scores...");
+
+        /// <summary>
+        /// "Deleted all scores!"
+        /// </summary>
+        public static LocalisableString DeletedAllScores => new TranslatableString(getKey(@"deleted_all_scores"), @"Deleted all scores!");
+
+        /// <summary>
+        /// "Deleting scores ({0} of {1})"
+        /// </summary>
+        public static LocalisableString DeletingScores(int deletedCount, int totalCount) => new TranslatableString(getKey(@"deleting_scores"), @"Deleting scores ({0} of {1})", deletedCount, totalCount);
+
+        /// <summary>
+        /// "No scores found to restore!"
+        /// </summary>
+        public static LocalisableString NoScoresFoundToRestore => new TranslatableString(getKey(@"no_scores_found_to_restore"), @"No scores found to restore!");
+
+        /// <summary>
+        /// "Restored all deleted scores!"
+        /// </summary>
+        public static LocalisableString RestoredAllDeletedScores => new TranslatableString(getKey(@"restored_all_deleted_scores"), @"Restored all deleted scores!");
+
+        /// <summary>
+        /// "Restoring deleted scores ({0} of {1})"
+        /// </summary>
+        public static LocalisableString RestoringDeletedScores(int restoredCount, int totalCount) => new TranslatableString(getKey(@"restoring_deleted_scores"), @"Restoring deleted scores ({0} of {1})", restoredCount, totalCount);
+
+        /// <summary>
+        /// "No skins found to delete!"
+        /// </summary>
+        public static LocalisableString NoSkinsFoundToDelete => new TranslatableString(getKey(@"no_skins_found_to_delete"), @"No skins found to delete!");
+
+        /// <summary>
+        /// "Preparing to delete all skins..."
+        /// </summary>
+        public static LocalisableString PreparingToDeleteAllSkins => new TranslatableString(getKey(@"preparing_to_delete_all_skins"), @"Preparing to delete all skins...");
+
+        /// <summary>
+        /// "Deleted all skins!"
+        /// </summary>
+        public static LocalisableString DeletedAllSkins => new TranslatableString(getKey(@"deleted_all_skins"), @"Deleted all skins!");
+
+        /// <summary>
+        /// "Deleting skins ({0} of {1})"
+        /// </summary>
+        public static LocalisableString DeletingSkins(int deletedCount, int totalCount) => new TranslatableString(getKey(@"deleting_skins"), @"Deleting skins ({0} of {1})", deletedCount, totalCount);
+
+        /// <summary>
+        /// "No skins found to restore!"
+        /// </summary>
+        public static LocalisableString NoSkinsFoundToRestore => new TranslatableString(getKey(@"no_skins_found_to_restore"), @"No skins found to restore!");
+
+        /// <summary>
+        /// "Restored all deleted skins!"
+        /// </summary>
+        public static LocalisableString RestoredAllDeletedSkins => new TranslatableString(getKey(@"restored_all_deleted_skins"), @"Restored all deleted skins!");
+
+        /// <summary>
+        /// "Restoring deleted skins ({0} of {1})"
+        /// </summary>
+        public static LocalisableString RestoringDeletedSkins(int restoredCount, int totalCount) => new TranslatableString(getKey(@"restoring_deleted_skins"), @"Restoring deleted skins ({0} of {1})", restoredCount, totalCount);
+
         private static string getKey(string key) => $@"{prefix}:{key}";
     }
 }

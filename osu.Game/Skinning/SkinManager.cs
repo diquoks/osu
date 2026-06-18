@@ -18,12 +18,14 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Rendering;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.IO.Stores;
+using osu.Framework.Localisation;
 using osu.Framework.Platform;
 using osu.Framework.Threading;
 using osu.Framework.Utils;
 using osu.Game.Audio;
 using osu.Game.Database;
 using osu.Game.IO;
+using osu.Game.Localisation;
 using osu.Game.Overlays.Notifications;
 using osu.Game.Utils;
 
@@ -452,5 +454,19 @@ namespace osu.Game.Skinning
 
             CurrentSkinInfo.Value = skinInfo ?? trianglesSkin.SkinInfo;
         }
+
+        protected override LocalisableString NoModelsFoundToDelete => NotificationsStrings.NoSkinsFoundToDelete;
+
+        protected override LocalisableString PreparingToDeleteAllModels => NotificationsStrings.PreparingToDeleteAllSkins;
+
+        protected override LocalisableString DeletedAllModels => NotificationsStrings.DeletedAllSkins;
+
+        protected override LocalisableString DeletingModels(int deletedCount, int totalCount) => NotificationsStrings.DeletingSkins(deletedCount, totalCount);
+
+        protected override LocalisableString NoModelsFoundToRestore => NotificationsStrings.NoSkinsFoundToRestore;
+
+        protected override LocalisableString RestoredAllDeletedModels => NotificationsStrings.RestoredAllDeletedSkins;
+
+        protected override LocalisableString RestoringDeletedModels(int restoredCount, int totalCount) => NotificationsStrings.RestoringDeletedSkins(restoredCount, totalCount);
     }
 }
