@@ -9,16 +9,21 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Sprites;
+using osu.Framework.Localisation;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
 using osu.Game.Beatmaps;
 using osu.Game.Configuration;
 using osu.Game.Database;
+using osu.Game.Localisation;
 using osu.Game.Online;
 using osu.Game.Online.API;
 using osu.Game.Online.Multiplayer;
 using osu.Game.Online.Rooms;
 using osu.Game.Online.Spectator;
+using osu.Game.Overlays;
+using osu.Game.Overlays.Notifications;
 using osu.Game.Rulesets.Scoring;
 using osu.Game.Scoring;
 using osu.Game.Screens.Ranking;
@@ -37,6 +42,10 @@ namespace osu.Game.Screens.Play
 
         [Resolved]
         private IAPIProvider api { get; set; }
+
+        [Resolved(canBeNull: true)]
+        [CanBeNull]
+        private INotificationOverlay notifications { get; set; }
 
         [Resolved]
         private SpectatorClient spectatorClient { get; set; }
@@ -137,14 +146,25 @@ namespace osu.Game.Screens.Play
 
                 if (displayNotification || shouldExit)
                 {
-                    string whatWillHappen = shouldExit
-                        ? "Play in this state is not permitted."
-                        : "Your score will not be submitted.";
+                    LocalisableString whatWillHappen = shouldExit
+                        ? NotificationsStrings.SubmittingPlayStateNotPermitted
+                        : NotificationsStrings.SubmittingScoreWillNotBeSubmitted;
 
                     if (string.IsNullOrEmpty(exception.Message))
-                        Logger.Error(exception, $"Failed to retrieve a score submission token.\n\n{whatWillHappen}");
+                    {
+                        notifications?.Post(new SimpleErrorNotification
+                        {
+                            Text = LocalisableString.Interpolate($"{NotificationsStrings.SubmittingFailedToRetrieveSubmissionToken}\n\n{whatWillHappen}"),
+                        });
+                    }
                     else
-                        Logger.Log($"{getUserFacingAPIError(exception)}\n\n{whatWillHappen}", level: LogLevel.Important);
+                    {
+                        notifications?.Post(new SimpleErrorNotification
+                        {
+                            Icon = FontAwesome.Solid.ExclamationCircle,
+                            Text = LocalisableString.Interpolate($"{getUserFacingAPIError(exception)}\n\n{whatWillHappen}"),
+                        });
+                    }
                 }
 
                 if (shouldExit)
@@ -325,7 +345,10 @@ namespace osu.Game.Screens.Play
 
             request.Failure += e =>
             {
-                Logger.Error(e, $"{getUserFacingAPIError(e)}\n\nScore was not submitted (id: {token.Value})");
+                notifications?.Post(new SimpleErrorNotification
+                {
+                    Text = LocalisableString.Interpolate($"{getUserFacingAPIError(e)}\n\n{NotificationsStrings.SubmittingScoreWasNotSubmitted(token.Value)}"),
+                });
                 scoreSubmissionSource.SetResult(false);
             };
 
@@ -333,7 +356,7 @@ namespace osu.Game.Screens.Play
             return scoreSubmissionSource.Task;
         }
 
-        private static string getUserFacingAPIError(Exception exception)
+        private static LocalisableString getUserFacingAPIError(Exception exception)
         {
             switch (exception.Message)
             {
@@ -342,13 +365,13 @@ namespace osu.Game.Screens.Play
                 case @"invalid verification hash":
                 case @"invalid token":
                 case @"outdated client":
-                    return "Please ensure that you are using the latest version of the official game releases.";
+                    return NotificationsStrings.SubmittingOutdatedClient;
 
                 case @"invalid or missing beatmap_hash":
-                    return "This beatmap does not match the online version. Please update or redownload it.";
+                    return NotificationsStrings.SubmittingInvalidBeatmapHash;
 
                 case @"expired token":
-                    return "Your system clock is set incorrectly. Please check your system time, date and timezone.";
+                    return NotificationsStrings.SubmittingExpiredToken;
 
                 default:
                     return exception.Message;

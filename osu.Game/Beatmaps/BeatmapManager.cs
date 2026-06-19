@@ -14,6 +14,7 @@ using osu.Framework.Audio;
 using osu.Framework.Audio.Track;
 using osu.Framework.Extensions;
 using osu.Framework.IO.Stores;
+using osu.Framework.Localisation;
 using osu.Framework.Platform;
 using osu.Game.Beatmaps.ControlPoints;
 using osu.Game.Beatmaps.Formats;
@@ -447,7 +448,7 @@ namespace osu.Game.Beatmaps
             var notification = new ProgressNotification
             {
                 Progress = 0,
-                Text = $"Preparing to delete all {HumanisedModelName} videos...",
+                Text = NotificationsStrings.PreparingToDeleteAllBeatmapVideos,
                 CompletionText = MaintenanceSettingsStrings.NoVideosFoundToDelete,
                 State = ProgressNotificationState.Active,
             };
@@ -470,10 +471,10 @@ namespace osu.Game.Beatmaps
                 {
                     DeleteFile(b, video);
                     deleted++;
-                    notification.CompletionText = $"Deleted {deleted} {HumanisedModelName} video(s)!";
+                    notification.CompletionText = NotificationsStrings.DeletedBeatmapVideos(deleted);
                 }
 
-                notification.Text = $"Deleting videos from {HumanisedModelName}s ({deleted} deleted)";
+                notification.Text = NotificationsStrings.DeletingVideosFromBeatmap(deleted);
 
                 notification.Progress = (float)++i / items.Count;
             }
@@ -683,6 +684,20 @@ namespace osu.Game.Beatmaps
         }
 
         #endregion
+
+        protected override LocalisableString NoModelsFoundToDeleteText => NotificationsStrings.NoBeatmapsFoundToDelete;
+
+        protected override LocalisableString PreparingToDeleteAllModelsText => NotificationsStrings.PreparingToDeleteAllBeatmaps;
+
+        protected override LocalisableString DeletedAllModelsText => NotificationsStrings.DeletedAllBeatmaps;
+
+        protected override LocalisableString DeletingModelsText(int deletedCount, int totalCount) => NotificationsStrings.DeletingBeatmaps(deletedCount, totalCount);
+
+        protected override LocalisableString NoModelsFoundToRestoreText => NotificationsStrings.NoBeatmapsFoundToRestore;
+
+        protected override LocalisableString RestoredAllDeletedModelsText => NotificationsStrings.RestoredAllDeletedBeatmaps;
+
+        protected override LocalisableString RestoringDeletedModelsText(int restoredCount, int totalCount) => NotificationsStrings.RestoringDeletedBeatmaps(restoredCount, totalCount);
 
         public override string HumanisedModelName => "beatmap";
     }
