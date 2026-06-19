@@ -210,16 +210,16 @@ namespace osu.Game.Scoring
             return null;
         }
 
-        protected override LocalisableString NoModelsWereFoundToImport => NotificationsStrings.NoScoresWereFoundToImport;
+        protected override LocalisableString NoModelsWereFoundToImportText => NotificationsStrings.NoScoresWereFoundToImport;
 
-        protected override LocalisableString ModelImportIsInitialising => NotificationsStrings.ScoreImportIsInitialising;
+        protected override LocalisableString ModelImportIsInitialisingText => NotificationsStrings.ScoreImportIsInitialising;
 
-        protected override LocalisableString ImportedModels(LocalisableString countText, int quantity) => NotificationsStrings.ImportedScores(countText, quantity);
+        protected override LocalisableString ImportedModelsText(LocalisableString countText, int quantity) => NotificationsStrings.ImportedScores(countText, quantity);
 
-        protected override LocalisableString ModelImportFailed => NotificationsStrings.ScoreImportFailed;
+        protected override LocalisableString ModelImportFailedText => NotificationsStrings.ScoreImportFailed;
 
-        protected override LocalisableString ModelImportIsPausedDueToGameplay => NotificationsStrings.ScoreImportIsPausedDueToGameplay;
+        protected override LocalisableString ModelImportIsPausedDueToGameplayText => NotificationsStrings.ScoreImportIsPausedDueToGameplay;
 
-        protected override LocalisableString ModelImportIsResuming => NotificationsStrings.ScoreImportIsResuming;
+        protected override LocalisableString ModelImportIsResumingText => NotificationsStrings.ScoreImportIsResuming;
     }
 }

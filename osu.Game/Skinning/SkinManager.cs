@@ -455,18 +455,18 @@ namespace osu.Game.Skinning
             CurrentSkinInfo.Value = skinInfo ?? trianglesSkin.SkinInfo;
         }
 
-        protected override LocalisableString NoModelsFoundToDelete => NotificationsStrings.NoSkinsFoundToDelete;
+        protected override LocalisableString NoModelsFoundToDeleteText => NotificationsStrings.NoSkinsFoundToDelete;
 
-        protected override LocalisableString PreparingToDeleteAllModels => NotificationsStrings.PreparingToDeleteAllSkins;
+        protected override LocalisableString PreparingToDeleteAllModelsText => NotificationsStrings.PreparingToDeleteAllSkins;
 
-        protected override LocalisableString DeletedAllModels => NotificationsStrings.DeletedAllSkins;
+        protected override LocalisableString DeletedAllModelsText => NotificationsStrings.DeletedAllSkins;
 
-        protected override LocalisableString DeletingModels(int deletedCount, int totalCount) => NotificationsStrings.DeletingSkins(deletedCount, totalCount);
+        protected override LocalisableString DeletingModelsText(int deletedCount, int totalCount) => NotificationsStrings.DeletingSkins(deletedCount, totalCount);
 
-        protected override LocalisableString NoModelsFoundToRestore => NotificationsStrings.NoSkinsFoundToRestore;
+        protected override LocalisableString NoModelsFoundToRestoreText => NotificationsStrings.NoSkinsFoundToRestore;
 
-        protected override LocalisableString RestoredAllDeletedModels => NotificationsStrings.RestoredAllDeletedSkins;
+        protected override LocalisableString RestoredAllDeletedModelsText => NotificationsStrings.RestoredAllDeletedSkins;
 
-        protected override LocalisableString RestoringDeletedModels(int restoredCount, int totalCount) => NotificationsStrings.RestoringDeletedSkins(restoredCount, totalCount);
+        protected override LocalisableString RestoringDeletedModelsText(int restoredCount, int totalCount) => NotificationsStrings.RestoringDeletedSkins(restoredCount, totalCount);
     }
 }

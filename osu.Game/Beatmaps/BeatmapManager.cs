@@ -685,19 +685,19 @@ namespace osu.Game.Beatmaps
 
         #endregion
 
-        protected override LocalisableString NoModelsFoundToDelete => NotificationsStrings.NoBeatmapsFoundToDelete;
+        protected override LocalisableString NoModelsFoundToDeleteText => NotificationsStrings.NoBeatmapsFoundToDelete;
 
-        protected override LocalisableString PreparingToDeleteAllModels => NotificationsStrings.PreparingToDeleteAllBeatmaps;
+        protected override LocalisableString PreparingToDeleteAllModelsText => NotificationsStrings.PreparingToDeleteAllBeatmaps;
 
-        protected override LocalisableString DeletedAllModels => NotificationsStrings.DeletedAllBeatmaps;
+        protected override LocalisableString DeletedAllModelsText => NotificationsStrings.DeletedAllBeatmaps;
 
-        protected override LocalisableString DeletingModels(int deletedCount, int totalCount) => NotificationsStrings.DeletingBeatmaps(deletedCount, totalCount);
+        protected override LocalisableString DeletingModelsText(int deletedCount, int totalCount) => NotificationsStrings.DeletingBeatmaps(deletedCount, totalCount);
 
-        protected override LocalisableString NoModelsFoundToRestore => NotificationsStrings.NoBeatmapsFoundToRestore;
+        protected override LocalisableString NoModelsFoundToRestoreText => NotificationsStrings.NoBeatmapsFoundToRestore;
 
-        protected override LocalisableString RestoredAllDeletedModels => NotificationsStrings.RestoredAllDeletedBeatmaps;
+        protected override LocalisableString RestoredAllDeletedModelsText => NotificationsStrings.RestoredAllDeletedBeatmaps;
 
-        protected override LocalisableString RestoringDeletedModels(int restoredCount, int totalCount) => NotificationsStrings.RestoringDeletedBeatmaps(restoredCount, totalCount);
+        protected override LocalisableString RestoringDeletedModelsText(int restoredCount, int totalCount) => NotificationsStrings.RestoringDeletedBeatmaps(restoredCount, totalCount);
 
         public override string HumanisedModelName => "beatmap";
     }

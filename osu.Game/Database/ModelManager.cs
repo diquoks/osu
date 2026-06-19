@@ -116,15 +116,15 @@ namespace osu.Game.Database
             if (items.Count == 0)
             {
                 if (!silent)
-                    PostNotification?.Invoke(new ProgressCompletionNotification { Text = NoModelsFoundToDelete });
+                    PostNotification?.Invoke(new ProgressCompletionNotification { Text = NoModelsFoundToDeleteText });
                 return;
             }
 
             var notification = new ProgressNotification
             {
                 Progress = 0,
-                Text = PreparingToDeleteAllModels,
-                CompletionText = DeletedAllModels,
+                Text = PreparingToDeleteAllModelsText,
+                CompletionText = DeletedAllModelsText,
                 State = ProgressNotificationState.Active,
             };
 
@@ -139,7 +139,7 @@ namespace osu.Game.Database
                     // user requested abort
                     return;
 
-                notification.Text = DeletingModels(++i, items.Count);
+                notification.Text = DeletingModelsText(++i, items.Count);
 
                 Delete(b);
 
@@ -158,14 +158,14 @@ namespace osu.Game.Database
             if (!items.Any())
             {
                 if (!silent)
-                    PostNotification?.Invoke(new ProgressCompletionNotification { Text = NoModelsFoundToRestore });
+                    PostNotification?.Invoke(new ProgressCompletionNotification { Text = NoModelsFoundToRestoreText });
                 return;
             }
 
             var notification = new ProgressNotification
             {
                 Progress = 0,
-                CompletionText = RestoredAllDeletedModels,
+                CompletionText = RestoredAllDeletedModelsText,
                 State = ProgressNotificationState.Active,
             };
 
@@ -180,7 +180,7 @@ namespace osu.Game.Database
                     // user requested abort
                     return;
 
-                notification.Text = RestoringDeletedModels(++i, items.Count);
+                notification.Text = RestoringDeletedModelsText(++i, items.Count);
 
                 Undelete(item);
 
@@ -229,19 +229,40 @@ namespace osu.Game.Database
 
         public Action<Notification>? PostNotification { get; set; }
 
-        protected virtual LocalisableString NoModelsFoundToDelete => $"No {HumanisedModelName}s found to delete!";
+        /// <summary>
+        /// "No models found to delete!"
+        /// </summary>
+        protected virtual LocalisableString NoModelsFoundToDeleteText => $"No {HumanisedModelName}s found to delete!";
 
-        protected virtual LocalisableString PreparingToDeleteAllModels => $"Preparing to delete all {HumanisedModelName}s...";
+        /// <summary>
+        /// "Preparing to delete all models..."
+        /// </summary>
+        protected virtual LocalisableString PreparingToDeleteAllModelsText => $"Preparing to delete all {HumanisedModelName}s...";
 
-        protected virtual LocalisableString DeletedAllModels => $"Deleted all {HumanisedModelName}s!";
+        /// <summary>
+        /// "Deleted all models!"
+        /// </summary>
+        protected virtual LocalisableString DeletedAllModelsText => $"Deleted all {HumanisedModelName}s!";
 
-        protected virtual LocalisableString DeletingModels(int deletedCount, int totalCount) => $"Deleting {HumanisedModelName}s ({deletedCount} of {totalCount})";
+        /// <summary>
+        /// "Deleting models ({0} of {1})"
+        /// </summary>
+        protected virtual LocalisableString DeletingModelsText(int deletedCount, int totalCount) => $"Deleting {HumanisedModelName}s ({deletedCount} of {totalCount})";
 
-        protected virtual LocalisableString NoModelsFoundToRestore => $"No {HumanisedModelName}s found to restore!";
+        /// <summary>
+        /// "No models found to restore!"
+        /// </summary>
+        protected virtual LocalisableString NoModelsFoundToRestoreText => $"No {HumanisedModelName}s found to restore!";
 
-        protected virtual LocalisableString RestoredAllDeletedModels => $"Restored all deleted {HumanisedModelName}s!";
+        /// <summary>
+        /// "Restored all deleted models!"
+        /// </summary>
+        protected virtual LocalisableString RestoredAllDeletedModelsText => $"Restored all deleted {HumanisedModelName}s!";
 
-        protected virtual LocalisableString RestoringDeletedModels(int restoredCount, int totalCount) => $"Restoring deleted {HumanisedModelName}s ({restoredCount} of {totalCount})";
+        /// <summary>
+        /// "Restoring deleted models ({0} of {1})"
+        /// </summary>
+        protected virtual LocalisableString RestoringDeletedModelsText(int restoredCount, int totalCount) => $"Restoring deleted {HumanisedModelName}s ({restoredCount} of {totalCount})";
 
         public virtual string HumanisedModelName => $"{typeof(TModel).Name.Replace(@"Info", "").ToLowerInvariant()}";
     }

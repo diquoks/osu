@@ -283,16 +283,16 @@ namespace osu.Game.Skinning
             return hadChanges;
         }
 
-        protected override LocalisableString NoModelsWereFoundToImport => NotificationsStrings.NoSkinsWereFoundToImport;
+        protected override LocalisableString NoModelsWereFoundToImportText => NotificationsStrings.NoSkinsWereFoundToImport;
 
-        protected override LocalisableString ModelImportIsInitialising => NotificationsStrings.SkinImportIsInitialising;
+        protected override LocalisableString ModelImportIsInitialisingText => NotificationsStrings.SkinImportIsInitialising;
 
-        protected override LocalisableString ImportedModels(LocalisableString countText, int quantity) => NotificationsStrings.ImportedSkins(countText, quantity);
+        protected override LocalisableString ImportedModelsText(LocalisableString countText, int quantity) => NotificationsStrings.ImportedSkins(countText, quantity);
 
-        protected override LocalisableString ModelImportFailed => NotificationsStrings.SkinImportFailed;
+        protected override LocalisableString ModelImportFailedText => NotificationsStrings.SkinImportFailed;
 
-        protected override LocalisableString ModelImportIsPausedDueToGameplay => NotificationsStrings.SkinImportIsPausedDueToGameplay;
+        protected override LocalisableString ModelImportIsPausedDueToGameplayText => NotificationsStrings.SkinImportIsPausedDueToGameplay;
 
-        protected override LocalisableString ModelImportIsResuming => NotificationsStrings.SkinImportIsResuming;
+        protected override LocalisableString ModelImportIsResumingText => NotificationsStrings.SkinImportIsResuming;
     }
 }

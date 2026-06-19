@@ -456,17 +456,17 @@ namespace osu.Game.Beatmaps
             return beatmaps;
         }
 
-        protected override LocalisableString NoModelsWereFoundToImport => NotificationsStrings.NoBeatmapsWereFoundToImport;
+        protected override LocalisableString NoModelsWereFoundToImportText => NotificationsStrings.NoBeatmapsWereFoundToImport;
 
-        protected override LocalisableString ModelImportIsInitialising => NotificationsStrings.BeatmapImportIsInitialising;
+        protected override LocalisableString ModelImportIsInitialisingText => NotificationsStrings.BeatmapImportIsInitialising;
 
-        protected override LocalisableString ImportedModels(LocalisableString countText, int quantity) => NotificationsStrings.ImportedBeatmaps(countText, quantity);
+        protected override LocalisableString ImportedModelsText(LocalisableString countText, int quantity) => NotificationsStrings.ImportedBeatmaps(countText, quantity);
 
-        protected override LocalisableString ModelImportFailed => NotificationsStrings.BeatmapImportFailed;
+        protected override LocalisableString ModelImportFailedText => NotificationsStrings.BeatmapImportFailed;
 
-        protected override LocalisableString ModelImportIsPausedDueToGameplay => NotificationsStrings.BeatmapImportIsPausedDueToGameplay;
+        protected override LocalisableString ModelImportIsPausedDueToGameplayText => NotificationsStrings.BeatmapImportIsPausedDueToGameplay;
 
-        protected override LocalisableString ModelImportIsResuming => NotificationsStrings.BeatmapImportIsResuming;
+        protected override LocalisableString ModelImportIsResumingText => NotificationsStrings.BeatmapImportIsResuming;
 
         public override string HumanisedModelName => "beatmap";
     }

@@ -102,7 +102,7 @@ namespace osu.Game.Database
         {
             if (tasks.Length == 0)
             {
-                notification.CompletionText = NoModelsWereFoundToImport;
+                notification.CompletionText = NoModelsWereFoundToImportText;
                 notification.State = ProgressNotificationState.Completed;
                 return Enumerable.Empty<RealmLive<TModel>>();
             }
@@ -115,7 +115,7 @@ namespace osu.Game.Database
 
             parameters.Batch |= tasks.Length >= minimum_items_considered_batch_import;
 
-            notification.Text = ModelImportIsInitialising;
+            notification.Text = ModelImportIsInitialisingText;
             notification.State = ProgressNotificationState.Active;
 
             await pauseIfNecessaryAsync(parameters, notification, notification.CancellationToken).ConfigureAwait(false);
@@ -138,7 +138,7 @@ namespace osu.Game.Database
                                 imported.Add(model);
                             current++;
 
-                            notification.Text = ImportedModels($"{current} of {tasks.Length}", tasks.Length);
+                            notification.Text = ImportedModelsText($"{current} of {tasks.Length}", tasks.Length);
                             notification.Progress = (float)current / tasks.Length;
                         }
                     }
@@ -167,7 +167,7 @@ namespace osu.Game.Database
                     }
                     else
                     {
-                        notification.Text = LocalisableString.Interpolate($"{ModelImportFailed}\n{NotificationsStrings.CheckLogsForMoreInformation}");
+                        notification.Text = LocalisableString.Interpolate($"{ModelImportFailedText}\n{NotificationsStrings.CheckLogsForMoreInformation}");
                         notification.State = ProgressNotificationState.Cancelled;
                     }
                 }
@@ -176,9 +176,9 @@ namespace osu.Game.Database
                     LocalisableString completionText;
 
                     if (tasks.Length > imported.Count)
-                        completionText = ImportedModels($"{imported.Count} of {tasks.Length}", tasks.Length);
+                        completionText = ImportedModelsText($"{imported.Count} of {tasks.Length}", tasks.Length);
                     else if (imported.Count > 1)
-                        completionText = ImportedModels($"{imported.Count}", imported.Count);
+                        completionText = ImportedModelsText($"{imported.Count}", imported.Count);
                     else
                         completionText = NotificationsStrings.ImportedModelInfo(imported.First().GetDisplayString());
 
@@ -633,7 +633,7 @@ namespace osu.Game.Database
 
             // A paused state could obviously be entered mid-import (during the `Task.WhenAll` below),
             // but in order to keep things simple let's focus on the most common scenario.
-            notification.Text = ModelImportIsPausedDueToGameplay;
+            notification.Text = ModelImportIsPausedDueToGameplayText;
             notification.State = ProgressNotificationState.Queued;
 
             while (PauseImports)
@@ -645,7 +645,7 @@ namespace osu.Game.Database
             cancellationToken.ThrowIfCancellationRequested();
             Logger.Log($@"{GetType().Name} is being resumed.");
 
-            notification.Text = ModelImportIsResuming;
+            notification.Text = ModelImportIsResumingText;
             notification.State = ProgressNotificationState.Active;
         }
 
@@ -661,17 +661,35 @@ namespace osu.Game.Database
                 yield return f.Filename;
         }
 
-        protected virtual LocalisableString NoModelsWereFoundToImport => $"No {HumanisedModelName}s were found to import!";
+        /// <summary>
+        /// "No models were found to import!"
+        /// </summary>
+        protected virtual LocalisableString NoModelsWereFoundToImportText => $"No {HumanisedModelName}s were found to import!";
 
-        protected virtual LocalisableString ModelImportIsInitialising => $"{HumanisedModelName.Titleize()} import is initialising...";
+        /// <summary>
+        /// "Model import is initialising..."
+        /// </summary>
+        protected virtual LocalisableString ModelImportIsInitialisingText => $"{HumanisedModelName.Titleize()} import is initialising...";
 
-        protected virtual LocalisableString ImportedModels(LocalisableString countText, int quantity) => $"Imported {countText} {HumanisedModelName.ToQuantity(quantity)}.";
+        /// <summary>
+        /// "Imported {0} model.|Imported {0} models."
+        /// </summary>
+        protected virtual LocalisableString ImportedModelsText(LocalisableString countText, int quantity) => $"Imported {countText} {HumanisedModelName.ToQuantity(quantity)}.";
 
-        protected virtual LocalisableString ModelImportFailed => $"{HumanisedModelName.Titleize()} import failed!";
+        /// <summary>
+        /// "Model import failed!"
+        /// </summary>
+        protected virtual LocalisableString ModelImportFailedText => $"{HumanisedModelName.Titleize()} import failed!";
 
-        protected virtual LocalisableString ModelImportIsPausedDueToGameplay => $"{HumanisedModelName.Titleize()} import is paused due to gameplay...";
+        /// <summary>
+        /// "Model import is paused due to gameplay..."
+        /// </summary>
+        protected virtual LocalisableString ModelImportIsPausedDueToGameplayText => $"{HumanisedModelName.Titleize()} import is paused due to gameplay...";
 
-        protected virtual LocalisableString ModelImportIsResuming => $"{HumanisedModelName.Titleize()} import is resuming...";
+        /// <summary>
+        /// "Model import is resuming..."
+        /// </summary>
+        protected virtual LocalisableString ModelImportIsResumingText => $"{HumanisedModelName.Titleize()} import is resuming...";
 
         public virtual string HumanisedModelName => $"{typeof(TModel).Name.Replace(@"Info", "").ToLowerInvariant()}";
     }

@@ -246,18 +246,18 @@ namespace osu.Game.Scoring
 
         #endregion
 
-        protected override LocalisableString NoModelsFoundToDelete => NotificationsStrings.NoScoresFoundToDelete;
+        protected override LocalisableString NoModelsFoundToDeleteText => NotificationsStrings.NoScoresFoundToDelete;
 
-        protected override LocalisableString PreparingToDeleteAllModels => NotificationsStrings.PreparingToDeleteAllScores;
+        protected override LocalisableString PreparingToDeleteAllModelsText => NotificationsStrings.PreparingToDeleteAllScores;
 
-        protected override LocalisableString DeletedAllModels => NotificationsStrings.DeletedAllScores;
+        protected override LocalisableString DeletedAllModelsText => NotificationsStrings.DeletedAllScores;
 
-        protected override LocalisableString DeletingModels(int deletedCount, int totalCount) => NotificationsStrings.DeletingScores(deletedCount, totalCount);
+        protected override LocalisableString DeletingModelsText(int deletedCount, int totalCount) => NotificationsStrings.DeletingScores(deletedCount, totalCount);
 
-        protected override LocalisableString NoModelsFoundToRestore => NotificationsStrings.NoScoresFoundToRestore;
+        protected override LocalisableString NoModelsFoundToRestoreText => NotificationsStrings.NoScoresFoundToRestore;
 
-        protected override LocalisableString RestoredAllDeletedModels => NotificationsStrings.RestoredAllDeletedScores;
+        protected override LocalisableString RestoredAllDeletedModelsText => NotificationsStrings.RestoredAllDeletedScores;
 
-        protected override LocalisableString RestoringDeletedModels(int restoredCount, int totalCount) => NotificationsStrings.RestoringDeletedScores(restoredCount, totalCount);
+        protected override LocalisableString RestoringDeletedModelsText(int restoredCount, int totalCount) => NotificationsStrings.RestoringDeletedScores(restoredCount, totalCount);
     }
 }
