@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using osu.Framework.Extensions;
 using osu.Framework.Extensions.IEnumerableExtensions;
+using osu.Framework.Localisation;
 using osu.Framework.Logging;
 using osu.Framework.Platform;
 using osu.Game.Beatmaps.Formats;
@@ -18,6 +19,7 @@ using osu.Game.Database;
 using osu.Game.Extensions;
 using osu.Game.IO;
 using osu.Game.IO.Archives;
+using osu.Game.Localisation;
 using osu.Game.Overlays.Notifications;
 using osu.Game.Rulesets;
 using osu.Game.Rulesets.Objects.Types;
@@ -301,8 +303,6 @@ namespace osu.Game.Beatmaps
             existing.DateAdded = DateTimeOffset.UtcNow;
         }
 
-        public override string HumanisedModelName => "beatmap";
-
         protected override BeatmapSetInfo? CreateModel(ArchiveReader reader, ImportParameters parameters)
         {
             // let's make sure there are actually .osu files to import.
@@ -455,5 +455,19 @@ namespace osu.Game.Beatmaps
 
             return beatmaps;
         }
+
+        protected override LocalisableString NoModelsWereFoundToImport => NotificationsStrings.NoBeatmapsWereFoundToImport;
+
+        protected override LocalisableString ModelImportIsInitialising => NotificationsStrings.BeatmapImportIsInitialising;
+
+        protected override LocalisableString ImportedModels(LocalisableString countText, int quantity) => NotificationsStrings.ImportedBeatmaps(countText, quantity);
+
+        protected override LocalisableString ModelImportFailed => NotificationsStrings.BeatmapImportFailed;
+
+        protected override LocalisableString ModelImportIsPausedDueToGameplay => NotificationsStrings.BeatmapImportIsPausedDueToGameplay;
+
+        protected override LocalisableString ModelImportIsResuming => NotificationsStrings.BeatmapImportIsResuming;
+
+        public override string HumanisedModelName => "beatmap";
     }
 }

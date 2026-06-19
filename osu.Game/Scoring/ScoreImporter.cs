@@ -7,11 +7,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using Newtonsoft.Json;
+using osu.Framework.Localisation;
 using osu.Framework.Logging;
 using osu.Framework.Platform;
 using osu.Game.Beatmaps;
 using osu.Game.Database;
 using osu.Game.IO.Archives;
+using osu.Game.Localisation;
 using osu.Game.Rulesets;
 using osu.Game.Scoring.Legacy;
 using osu.Game.Online.API;
@@ -207,5 +209,17 @@ namespace osu.Game.Scoring
 
             return null;
         }
+
+        protected override LocalisableString NoModelsWereFoundToImport => NotificationsStrings.NoScoresWereFoundToImport;
+
+        protected override LocalisableString ModelImportIsInitialising => NotificationsStrings.ScoreImportIsInitialising;
+
+        protected override LocalisableString ImportedModels(LocalisableString countText, int quantity) => NotificationsStrings.ImportedScores(countText, quantity);
+
+        protected override LocalisableString ModelImportFailed => NotificationsStrings.ScoreImportFailed;
+
+        protected override LocalisableString ModelImportIsPausedDueToGameplay => NotificationsStrings.ScoreImportIsPausedDueToGameplay;
+
+        protected override LocalisableString ModelImportIsResuming => NotificationsStrings.ScoreImportIsResuming;
     }
 }

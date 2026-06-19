@@ -532,6 +532,106 @@ Click to see what's new!", version);
         /// </summary>
         public static LocalisableString CheckLogsForIssuesWithFailedItems(int failedCount) => new TranslatableString(getKey(@"check_logs_for_issues_with_failed_items"), @"Check logs for issues with {0} failed items.", failedCount);
 
+        /// <summary>
+        /// "Check logs for more information."
+        /// </summary>
+        public static LocalisableString CheckLogsForMoreInformation => new TranslatableString(getKey(@"check_logs_for_more_information"), @"Check logs for more information.");
+
+        /// <summary>
+        /// "Imported {0}!"
+        /// </summary>
+        public static LocalisableString ImportedModelInfo(string displayString) => new TranslatableString(getKey(@"imported_model_info"), @"Imported {0}!", displayString);
+
+        /// <summary>
+        /// "No beatmaps were found to import!"
+        /// </summary>
+        public static LocalisableString NoBeatmapsWereFoundToImport => new TranslatableString(getKey(@"no_beatmaps_were_found_to_import"), @"No beatmaps were found to import!");
+
+        /// <summary>
+        /// "Beatmap import is initialising..."
+        /// </summary>
+        public static LocalisableString BeatmapImportIsInitialising => new TranslatableString(getKey(@"beatmap_import_is_initialising"), @"Beatmap import is initialising...");
+
+        /// <summary>
+        /// "Imported {0} beatmap.|Imported {0} beatmaps."
+        /// </summary>
+        public static LocalisableString ImportedBeatmaps(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"imported_beatmaps"), @"Imported {0} beatmap.|Imported {0} beatmaps.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Beatmap import failed!"
+        /// </summary>
+        public static LocalisableString BeatmapImportFailed => new TranslatableString(getKey(@"beatmap_import_failed"), @"Beatmap import failed!");
+
+        /// <summary>
+        /// "Beatmap import is paused due to gameplay..."
+        /// </summary>
+        public static LocalisableString BeatmapImportIsPausedDueToGameplay => new TranslatableString(getKey(@"beatmap_import_is_paused_due_to_gameplay"), @"Beatmap import is paused due to gameplay...");
+
+        /// <summary>
+        /// "Beatmap import is resuming..."
+        /// </summary>
+        public static LocalisableString BeatmapImportIsResuming => new TranslatableString(getKey(@"beatmap_import_is_resuming"), @"Beatmap import is resuming...");
+
+        /// <summary>
+        /// "No scores were found to import!"
+        /// </summary>
+        public static LocalisableString NoScoresWereFoundToImport => new TranslatableString(getKey(@"no_scores_were_found_to_import"), @"No scores were found to import!");
+
+        /// <summary>
+        /// "Score import is initialising..."
+        /// </summary>
+        public static LocalisableString ScoreImportIsInitialising => new TranslatableString(getKey(@"score_import_is_initialising"), @"Score import is initialising...");
+
+        /// <summary>
+        /// "Imported {0} score.|Imported {0} scores."
+        /// </summary>
+        public static LocalisableString ImportedScores(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"imported_scores"), @"Imported {0} score.|Imported {0} scores.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Score import failed!"
+        /// </summary>
+        public static LocalisableString ScoreImportFailed => new TranslatableString(getKey(@"score_import_failed"), @"Score import failed!");
+
+        /// <summary>
+        /// "Score import is paused due to gameplay..."
+        /// </summary>
+        public static LocalisableString ScoreImportIsPausedDueToGameplay => new TranslatableString(getKey(@"score_import_is_paused_due_to_gameplay"), @"Score import is paused due to gameplay...");
+
+        /// <summary>
+        /// "Score import is resuming..."
+        /// </summary>
+        public static LocalisableString ScoreImportIsResuming => new TranslatableString(getKey(@"score_import_is_resuming"), @"Score import is resuming...");
+
+        /// <summary>
+        /// "No skins were found to import!"
+        /// </summary>
+        public static LocalisableString NoSkinsWereFoundToImport => new TranslatableString(getKey(@"no_skins_were_found_to_import"), @"No skins were found to import!");
+
+        /// <summary>
+        /// "Skin import is initialising..."
+        /// </summary>
+        public static LocalisableString SkinImportIsInitialising => new TranslatableString(getKey(@"skin_import_is_initialising"), @"Skin import is initialising...");
+
+        /// <summary>
+        /// "Imported {0} skin.|Imported {0} skins."
+        /// </summary>
+        public static LocalisableString ImportedSkins(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"imported_skins"), @"Imported {0} skin.|Imported {0} skins.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Skin import failed!"
+        /// </summary>
+        public static LocalisableString SkinImportFailed => new TranslatableString(getKey(@"skin_import_failed"), @"Skin import failed!");
+
+        /// <summary>
+        /// "Skin import is paused due to gameplay..."
+        /// </summary>
+        public static LocalisableString SkinImportIsPausedDueToGameplay => new TranslatableString(getKey(@"skin_import_is_paused_due_to_gameplay"), @"Skin import is paused due to gameplay...");
+
+        /// <summary>
+        /// "Skin import is resuming..."
+        /// </summary>
+        public static LocalisableString SkinImportIsResuming => new TranslatableString(getKey(@"skin_import_is_resuming"), @"Skin import is resuming...");
+
         private static string getKey(string key) => $@"{prefix}:{key}";
     }
 }
