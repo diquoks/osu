@@ -427,6 +427,111 @@ Click to see what's new!", version);
         /// </summary>
         public static LocalisableString RestoringDeletedSkins(int restoredCount, int totalCount) => new TranslatableString(getKey(@"restoring_deleted_skins"), @"Restoring deleted skins ({0} of {1})", restoredCount, totalCount);
 
+        /// <summary>
+        /// "{0} of {1}"
+        /// </summary>
+        public static LocalisableString ComparativeProcessedItemsCount(int processedCount, int totalCount) => new TranslatableString(getKey(@"comparative_processed_items_count"), @"{0} of {1}", processedCount, totalCount);
+
+        /// <summary>
+        /// "Reprocessing star ratings for beatmaps ({0} of {1})"
+        /// </summary>
+        public static LocalisableString ReprocessingStarRatingsForBeatmaps(int processedCount, int totalCount) => new TranslatableString(getKey(@"reprocessing_star_ratings_for_beatmaps"), @"Reprocessing star ratings for beatmaps ({0} of {1})", processedCount, totalCount);
+
+        /// <summary>
+        /// "{0} beatmap's star ratings have been updated.|{0} beatmaps' star ratings have been updated."
+        /// </summary>
+        public static LocalisableString BeatmapsStarRatingsHaveBeenUpdated(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"beatmaps_star_ratings_have_been_updated"), @"{0} beatmap's star ratings have been updated.|{0} beatmaps' star ratings have been updated.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Updating online data for beatmaps ({0} of {1})"
+        /// </summary>
+        public static LocalisableString UpdatingOnlineDataForBeatmaps(int processedCount, int totalCount) => new TranslatableString(getKey(@"updating_online_data_for_beatmaps"), @"Updating online data for beatmaps ({0} of {1})", processedCount, totalCount);
+
+        /// <summary>
+        /// "{0} beatmap's online data has been updated.|{0} beatmaps' online data has been updated."
+        /// </summary>
+        public static LocalisableString BeatmapsOnlineDataHasBeenUpdated(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"beatmaps_online_data_has_been_updated"), @"{0} beatmap's online data has been updated.|{0} beatmaps' online data has been updated.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Populating missing statistics for beatmaps ({0} of {1})"
+        /// </summary>
+        public static LocalisableString PopulatingMissingStatisticsForBeatmaps(int processedCount, int totalCount) => new TranslatableString(getKey(@"populating_missing_statistics_for_beatmaps"), @"Populating missing statistics for beatmaps ({0} of {1})", processedCount, totalCount);
+
+        /// <summary>
+        /// "{0} beatmap has been populated with missing statistics.|{0} beatmaps have been populated with missing statistics."
+        /// </summary>
+        public static LocalisableString BeatmapsHaveBeenPopulatedWithMissingStatistics(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"beatmaps_have_been_populated_with_missing_statistics"), @"{0} beatmap has been populated with missing statistics.|{0} beatmaps have been populated with missing statistics.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Populating missing statistics for scores ({0} of {1})"
+        /// </summary>
+        public static LocalisableString PopulatingMissingStatisticsForScores(int processedCount, int totalCount) => new TranslatableString(getKey(@"populating_missing_statistics_for_scores"), @"Populating missing statistics for scores ({0} of {1})", processedCount, totalCount);
+
+        /// <summary>
+        /// "{0} score has been populated with missing statistics.|{0} scores have been populated with missing statistics."
+        /// </summary>
+        public static LocalisableString ScoresHaveBeenPopulatedWithMissingStatistics(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"scores_have_been_populated_with_missing_statistics"), @"{0} score has been populated with missing statistics.|{0} scores have been populated with missing statistics.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Upgrading scores to new mod multipliers ({0} of {1})"
+        /// </summary>
+        public static LocalisableString UpgradingScoresToNewModMultipliers(int processedCount, int totalCount) => new TranslatableString(getKey(@"upgrading_scores_to_new_mod_multipliers"), @"Upgrading scores to new mod multipliers ({0} of {1})", processedCount, totalCount);
+
+        /// <summary>
+        /// "{0} score has been upgraded to the new mod multipliers.|{0} scores have been upgraded to the new mod multipliers."
+        /// </summary>
+        public static LocalisableString ScoresHaveBeenUpgradedToTheNewModMultipliers(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"scores_have_been_upgraded_to_the_new_mod_multipliers"), @"{0} score has been upgraded to the new mod multipliers.|{0} scores have been upgraded to the new mod multipliers.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Upgrading scores to new scoring algorithm ({0} of {1})"
+        /// </summary>
+        public static LocalisableString UpgradingScoresToNewScoringAlgorithm(int processedCount, int totalCount) => new TranslatableString(getKey(@"upgrading_scores_to_new_scoring_algorithm"), @"Upgrading scores to new scoring algorithm ({0} of {1})", processedCount, totalCount);
+
+        /// <summary>
+        /// "{0} score has been upgraded to the new scoring algorithm.|{0} scores have been upgraded to the new scoring algorithm."
+        /// </summary>
+        public static LocalisableString ScoresHaveBeenUpgradedToTheNewScoringAlgorithm(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"scores_have_been_upgraded_to_the_new_scoring_algorithm"), @"{0} score has been upgraded to the new scoring algorithm.|{0} scores have been upgraded to the new scoring algorithm.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Adjusting ranks of scores ({0} of {1})"
+        /// </summary>
+        public static LocalisableString AdjustingRanksOfScores(int processedCount, int totalCount) => new TranslatableString(getKey(@"adjusting_ranks_of_scores"), @"Adjusting ranks of scores ({0} of {1})", processedCount, totalCount);
+
+        /// <summary>
+        /// "{0} score now has more correct ranks.|{0} scores now have more correct ranks."
+        /// </summary>
+        public static LocalisableString ScoresNowHaveMoreCorrectRanks(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"scores_now_have_more_correct_ranks"), @"{0} score now has more correct ranks.|{0} scores now have more correct ranks.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Populating missing submission and rank dates ({0} of {1})"
+        /// </summary>
+        public static LocalisableString PopulatingMissingSubmissionAndRankDates(int processedCount, int totalCount) => new TranslatableString(getKey(@"populating_missing_submission_and_rank_dates"), @"Populating missing submission and rank dates ({0} of {1})", processedCount, totalCount);
+
+        /// <summary>
+        /// "{0} beatmapset now has correct submission and rank dates.|{0} beatmapsets now have correct submission and rank dates."
+        /// </summary>
+        public static LocalisableString BeatmapsetsNowHaveCorrectSubmissionAndRankDates(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"beatmapsets_now_have_correct_submission_and_rank_dates"), @"{0} beatmapset now has correct submission and rank dates.|{0} beatmapsets now have correct submission and rank dates.", countText), quantity, '|');
+
+        /// <summary>
+        /// "Updating user tags ({0} of {1})"
+        /// </summary>
+        public static LocalisableString UpdatingUserTags(int processedCount, int totalCount) => new TranslatableString(getKey(@"updating_user_tags"), @"Updating user tags ({0} of {1})", processedCount, totalCount);
+
+        /// <summary>
+        /// "{0} beatmap has had its tags updated.|{0} beatmaps have had their tags updated."
+        /// </summary>
+        public static LocalisableString BeatmapsHaveHadTheirTagsUpdated(LocalisableString countText, int quantity) => new PluralisableString(new TranslatableString(getKey(@"beatmaps_have_had_their_tags_updated"), @"{0} beatmap has had its tags updated.|{0} beatmaps have had their tags updated.", countText), quantity, '|');
+
+        /// <summary>
+        /// "This runs once a month to allow searching user tags."
+        /// </summary>
+        public static LocalisableString ThisRunsOnceAMonthToAllowSearchingUserTags => new TranslatableString(getKey(@"this_runs_once_a_month_to_allow_searching_user_tags"), @"This runs once a month to allow searching user tags.");
+
+        /// <summary>
+        /// "Check logs for issues with {0} failed items."
+        /// </summary>
+        public static LocalisableString CheckLogsForIssuesWithFailedItems(int failedCount) => new TranslatableString(getKey(@"check_logs_for_issues_with_failed_items"), @"Check logs for issues with {0} failed items.", failedCount);
+
         private static string getKey(string key) => $@"{prefix}:{key}";
     }
 }
