@@ -302,6 +302,16 @@ Click to see what's new!", version);
         /// </summary>
         public static LocalisableString PreventSubmittingWithExpiredToken => new TranslatableString(getKey(@"prevent_submitting_with_expired_token"), @"Your system clock is set incorrectly. Please check your system time, date and timezone.");
 
+        /// <summary>
+        /// "Server outage in progress"
+        /// </summary>
+        public static LocalisableString ServerOutageInProgress => new TranslatableString(getKey(@"server_outage_in_progress"), @"Server outage in progress");
+
+        /// <summary>
+        /// "Online functionality is not available due to an outage. Sorry for the inconvenience."
+        /// </summary>
+        public static LocalisableString ServerOutageExplanation => new TranslatableString(getKey(@"server_outage_explanation"), @"Online functionality is not available due to an outage. Sorry for the inconvenience.");
+
         private static string getKey(string key) => $@"{prefix}:{key}";
     }
 }
