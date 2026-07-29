@@ -97,6 +97,11 @@ namespace osu.Game.Beatmaps
         int? TrackId { get; }
 
         /// <summary>
+        /// Average user rating for this beatmap set.
+        /// </summary>
+        float Rating { get; }
+
+        /// <summary>
         /// Total vote counts of user ratings on a scale of 0..10 where 0 is unused (probably will be fixed at API?).
         /// </summary>
         int[]? Ratings { get; }

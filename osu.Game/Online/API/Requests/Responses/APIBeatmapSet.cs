@@ -58,6 +58,9 @@ namespace osu.Game.Online.API.Requests.Responses
         [JsonProperty(@"last_updated")]
         public DateTimeOffset? LastUpdated { get; set; }
 
+        [JsonProperty("rating")]
+        public float Rating { get; set; }
+
         [JsonProperty("ratings")]
         public int[] Ratings { get; set; } = Array.Empty<int>();
 

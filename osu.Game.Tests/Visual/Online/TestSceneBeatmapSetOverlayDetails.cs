@@ -38,11 +38,11 @@ namespace osu.Game.Tests.Visual.Online
             var firstSet = createSet();
             var secondSet = createSet();
 
-            AddStep("set first set", () => details.BeatmapSet = firstSet);
-            AddAssert("ratings set", () => details.Ratings.Ratings == firstSet.Ratings);
+            AddStep("set first beatmapset", () => details.BeatmapSet = firstSet);
+            AddAssert("beatmapset set", () => details.Ratings.BeatmapSet == firstSet);
 
-            AddStep("set second set", () => details.BeatmapSet = secondSet);
-            AddAssert("ratings set", () => details.Ratings.Ratings == secondSet.Ratings);
+            AddStep("set second beatmapset", () => details.BeatmapSet = secondSet);
+            AddAssert("beatmapset set", () => details.Ratings.BeatmapSet == secondSet);
 
             static APIBeatmapSet createSet() => new APIBeatmapSet
             {

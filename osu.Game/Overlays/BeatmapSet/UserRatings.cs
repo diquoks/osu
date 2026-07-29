@@ -8,9 +8,11 @@ using osu.Framework.Allocation;
 using osu.Framework.Extensions.LocalisationExtensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Localisation;
 using osu.Game.Graphics;
 using osu.Game.Graphics.Sprites;
 using osu.Game.Graphics.UserInterface;
+using osu.Game.Online.API.Requests.Responses;
 using osu.Game.Resources.Localisation.Web;
 
 namespace osu.Game.Overlays.BeatmapSet
@@ -19,25 +21,26 @@ namespace osu.Game.Overlays.BeatmapSet
     {
         private readonly FillFlowContainer header;
         private readonly Bar ratingsBar;
-        private readonly OsuSpriteText negativeRatings, positiveRatings;
+        private readonly OsuSpriteText averageRating, negativeRatings, positiveRatings;
         private readonly Container graphContainer;
         private readonly BarGraph graph;
 
-        private int[] ratings;
+        private APIBeatmapSet beatmapSet;
 
-        public int[] Ratings
+        public APIBeatmapSet BeatmapSet
         {
-            get => ratings;
+            get => beatmapSet;
             set
             {
-                if (value == ratings) return;
+                if (value == beatmapSet) return;
 
-                ratings = value;
+                beatmapSet = value;
 
                 const int rating_range = 10;
 
-                if (ratings == null)
+                if (beatmapSet == null)
                 {
+                    averageRating.Text = BeatmapsetsStrings.ShowStatsUserRating;
                     negativeRatings.Text = 0.ToLocalisableString(@"N0");
                     positiveRatings.Text = 0.ToLocalisableString(@"N0");
                     ratingsBar.Length = 0;
@@ -45,11 +48,12 @@ namespace osu.Game.Overlays.BeatmapSet
                 }
                 else
                 {
-                    var usableRange = Ratings.Skip(1).Take(rating_range); // adjust for API returning weird empty data at 0.
+                    var usableRange = beatmapSet.Ratings.Skip(1).Take(rating_range); // adjust for API returning weird empty data at 0.
 
                     int negativeCount = usableRange.Take(rating_range / 2).Sum();
                     int totalCount = usableRange.Sum();
 
+                    averageRating.Text = LocalisableString.Interpolate($"{BeatmapsetsStrings.ShowStatsUserRating} ({BeatmapSet.Rating:N2})");
                     negativeRatings.Text = negativeCount.ToLocalisableString(@"N0");
                     positiveRatings.Text = (totalCount - negativeCount).ToLocalisableString(@"N0");
                     ratingsBar.Length = totalCount == 0 ? 0 : (float)negativeCount / totalCount;
@@ -69,7 +73,7 @@ namespace osu.Game.Overlays.BeatmapSet
                     Direction = FillDirection.Vertical,
                     Children = new Drawable[]
                     {
-                        new OsuSpriteText
+                        averageRating = new OsuSpriteText
                         {
                             Anchor = Anchor.TopCentre,
                             Origin = Anchor.TopCentre,
