@@ -7,7 +7,6 @@ using osu.Framework.Allocation;
 using osu.Framework.Extensions.LocalisationExtensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Graphics.Cursor;
 using osu.Framework.Localisation;
 using osu.Game.Graphics;
 using osu.Game.Graphics.Sprites;
@@ -22,9 +21,8 @@ namespace osu.Game.Overlays.BeatmapSet
         protected readonly FailRetryGraph Graph;
 
         private readonly FillFlowContainer header;
-        private readonly SuccessRatePercentage successPercent;
         private readonly Bar successRate;
-        private readonly Container percentContainer;
+        private readonly OsuSpriteText successPercent;
 
         private APIBeatmap beatmap;
 
@@ -47,10 +45,8 @@ namespace osu.Game.Overlays.BeatmapSet
             int playCount = beatmap?.PlayCount ?? 0;
 
             float rate = playCount != 0 ? (float)passCount / playCount : 0;
-            successPercent.Text = rate.ToLocalisableString(@"0.#%");
-            successPercent.TooltipText = $"{passCount} / {playCount}";
             successRate.Length = rate;
-            percentContainer.ResizeWidthTo(successRate.Length, 250, Easing.InOutCubic);
+            successPercent.Text = LocalisableString.Interpolate($"{rate:P1} ({BeatmapsetsStrings.ShowInfoSuccessRatePlays(passCount.ToLocalisableString("N0"), playCount.ToLocalisableString("N0")).ToQuantity(playCount)})");
 
             Graph.FailTimes = beatmap?.FailTimes;
         }
@@ -79,17 +75,11 @@ namespace osu.Game.Overlays.BeatmapSet
                             Height = 5,
                             Margin = new MarginPadding { Top = 5 },
                         },
-                        percentContainer = new Container
+                        successPercent = new OsuSpriteText
                         {
-                            RelativeSizeAxes = Axes.X,
-                            AutoSizeAxes = Axes.Y,
-                            Width = 0f,
-                            Child = successPercent = new SuccessRatePercentage
-                            {
-                                Anchor = Anchor.TopRight,
-                                Origin = Anchor.TopCentre,
-                                Font = OsuFont.GetFont(size: 12),
-                            },
+                            Anchor = Anchor.TopCentre,
+                            Origin = Anchor.TopCentre,
+                            Font = OsuFont.GetFont(size: 12),
                         },
                         new OsuSpriteText
                         {
@@ -124,11 +114,6 @@ namespace osu.Game.Overlays.BeatmapSet
             base.UpdateAfterChildren();
 
             Graph.Padding = new MarginPadding { Top = header.DrawHeight };
-        }
-
-        private partial class SuccessRatePercentage : OsuSpriteText, IHasTooltip
-        {
-            public LocalisableString TooltipText { get; set; }
         }
     }
 }
