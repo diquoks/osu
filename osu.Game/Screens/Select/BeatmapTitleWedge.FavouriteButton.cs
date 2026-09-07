@@ -169,7 +169,7 @@ namespace osu.Game.Screens.Select
             {
                 get
                 {
-                    if (api.LocalUser.Value is GuestUser && working.Value.BeatmapSetInfo.OnlineID > 0)
+                    if (!api.IsLoggedIn && working.Value.BeatmapSetInfo.OnlineID > 0)
                         return BeatmapsetsStrings.ShowDetailsFavouriteLogin.ToSentence();
 
                     if (!Enabled.Value)
