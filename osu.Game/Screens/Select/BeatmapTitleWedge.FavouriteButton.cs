@@ -13,7 +13,6 @@ using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
 using osu.Framework.Localisation;
-using osu.Game.Beatmaps;
 using osu.Game.Graphics;
 using osu.Game.Graphics.Containers;
 using osu.Game.Graphics.Sprites;
@@ -43,9 +42,6 @@ namespace osu.Game.Screens.Select
 
             private APIBeatmapSet? onlineBeatmapSet;
             private PostBeatmapFavouriteRequest? favouriteRequest;
-
-            [Resolved]
-            private IBindable<WorkingBeatmap> working { get; set; } = null!;
 
             [Resolved]
             private OverlayColourProvider colourProvider { get; set; } = null!;
@@ -169,11 +165,7 @@ namespace osu.Game.Screens.Select
             {
                 get
                 {
-                    if (!api.IsLoggedIn && working.Value.BeatmapSetInfo.OnlineID > 0)
-                        return BeatmapsetsStrings.ShowDetailsFavouriteLogin.ToSentence();
-
-                    if (!Enabled.Value)
-                        return string.Empty;
+                    if (!Enabled.Value) return string.Empty;
 
                     return isFavourite.Value
                         ? BeatmapsetsStrings.ShowDetailsUnfavourite.ToSentence()
