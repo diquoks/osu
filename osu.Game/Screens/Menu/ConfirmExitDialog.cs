@@ -2,6 +2,7 @@
 // See the LICENCE file in the repository root for full licence text.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics.Sprites;
@@ -9,7 +10,6 @@ using osu.Framework.Localisation;
 using osu.Game.Localisation;
 using osu.Game.Overlays;
 using osu.Game.Overlays.Dialog;
-using osu.Game.Overlays.Notifications;
 
 namespace osu.Game.Screens.Menu
 {
@@ -37,20 +37,24 @@ namespace osu.Game.Screens.Menu
 
             if (notifications.HasOngoingOperations)
             {
-                var ongoingOperations = notifications.OngoingOperations.ToArray();
-                LocalisableString ongoingOperationsText = ongoingOperations.Take(10).Aggregate<ProgressNotification, LocalisableString>(string.Empty, (current, n) =>
+                var ongoingOperations = notifications.OngoingOperations.Take(10).Select(n =>
                 {
                     if (n.Progress > 0)
-                        return LocalisableString.Interpolate($"{current}\n{n.Text} ({n.Progress:0%})");
+                        return LocalisableString.Interpolate($"{n.Text} ({n.Progress:0%})");
 
-                    return LocalisableString.Interpolate($"{current}\n{n.Text}");
-                });
+                    return n.Text;
+                }).ToArray();
 
-                var dialogText = ongoingOperations.Length > 10
-                    ? DialogStrings.ConfirmExitBodyTextOtherOngoingOperations(ongoingOperationsText, ongoingOperations.Length - 10)
-                    : DialogStrings.ConfirmExitBodyTextOngoingOperations(ongoingOperationsText);
+                var dialogStrings = new List<LocalisableString>
+                {
+                    DialogStrings.ConfirmExitBodyTextBackgroundOperationsWillBeAborted,
+                    LocalisableString.Join("\n", ongoingOperations)
+                };
 
-                BodyText = LocalisableString.Interpolate($"{dialogText}\n\n{DialogStrings.ConfirmDialogBodyText}");
+                if (ongoingOperations.Length > 10)
+                    dialogStrings.Add(DialogStrings.ConfirmExitBodyTextOtherOperationsCount(ongoingOperations.Length - 10));
+
+                BodyText = LocalisableString.Join("\n\n", [.. dialogStrings, DialogStrings.ConfirmDialogBodyText]);
                 Buttons = new PopupDialogButton[]
                 {
                     new PopupDialogDangerousButton

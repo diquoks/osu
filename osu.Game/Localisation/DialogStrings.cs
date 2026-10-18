@@ -75,26 +75,14 @@ namespace osu.Game.Localisation
         public static LocalisableString ConfirmDialogBodyText => new TranslatableString(getKey(@"confirm_exit_body_text"), @"Last chance to turn back");
 
         /// <summary>
-        /// "There are currently some background operations which will be aborted if you continue:
-        ///
-        /// {0}"
+        /// "There are currently some background operations which will be aborted if you continue:"
         /// </summary>
-        public static LocalisableString ConfirmExitBodyTextOngoingOperations(LocalisableString ongoingOperationsText) => new TranslatableString(getKey(@"confirm_exit_body_text_ongoing_operations"), @"There are currently some background operations which will be aborted if you continue:
-
-{0}", ongoingOperationsText);
+        public static LocalisableString ConfirmExitBodyTextBackgroundOperationsWillBeAborted => new TranslatableString(getKey(@"confirm_exit_body_text_background_operations_will_be_aborted"), @"There are currently some background operations which will be aborted if you continue:");
 
         /// <summary>
-        /// "There are currently some background operations which will be aborted if you continue:
-        ///
-        /// {0}
-        ///
-        /// and {1} other operation(s)."
+        /// "and {0} other operation.|and {0} other operations."
         /// </summary>
-        public static LocalisableString ConfirmExitBodyTextOtherOngoingOperations(LocalisableString ongoingOperationsText, int count) => new TranslatableString(getKey(@"confirm_exit_body_text_other_ongoing_operations"), @"There are currently some background operations which will be aborted if you continue:
-
-{0}
-
-and {1} other operation(s).", ongoingOperationsText, count);
+        public static LocalisableString ConfirmExitBodyTextOtherOperationsCount(int count) => new PluralisableString(new TranslatableString(getKey(@"confirm_exit_body_text_other_operations_count"), @"and {0} other operation.|and {0} other operations.", count), count, '|');
 
         /// <summary>
         /// "Let me out!"
