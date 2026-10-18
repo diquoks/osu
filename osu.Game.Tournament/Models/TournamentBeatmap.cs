@@ -80,6 +80,8 @@ namespace osu.Game.Tournament.Models
 
         int? IBeatmapSetOnlineInfo.TrackId => throw new NotImplementedException();
 
+        double IBeatmapSetOnlineInfo.Rating => throw new NotImplementedException();
+
         int[] IBeatmapSetOnlineInfo.Ratings => throw new NotImplementedException();
 
         BeatmapSetHypeStatus IBeatmapSetOnlineInfo.HypeStatus => throw new NotImplementedException();

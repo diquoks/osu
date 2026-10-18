@@ -38,28 +38,34 @@ namespace osu.Game.Tests.Visual.Online
             var firstSet = createSet();
             var secondSet = createSet();
 
-            AddStep("set first set", () => details.BeatmapSet = firstSet);
-            AddAssert("ratings set", () => details.Ratings.Ratings == firstSet.Ratings);
+            AddStep("set first beatmapset", () => details.BeatmapSet = firstSet);
+            AddAssert("beatmapset set", () => details.Ratings.BeatmapSet == firstSet);
 
-            AddStep("set second set", () => details.BeatmapSet = secondSet);
-            AddAssert("ratings set", () => details.Ratings.Ratings == secondSet.Ratings);
+            AddStep("set second beatmapset", () => details.BeatmapSet = secondSet);
+            AddAssert("beatmapset set", () => details.Ratings.BeatmapSet == secondSet);
 
-            static APIBeatmapSet createSet() => new APIBeatmapSet
+            static APIBeatmapSet createSet()
             {
-                Beatmaps = new[]
+                int[] ratings = Enumerable.Range(0, 11).Select(_ => RNG.Next(10)).ToArray();
+
+                return new APIBeatmapSet
                 {
-                    new APIBeatmap
+                    Beatmaps = new[]
                     {
-                        FailTimes = new APIFailTimes
+                        new APIBeatmap
                         {
-                            Fails = Enumerable.Range(1, 100).Select(_ => RNG.Next(10)).ToArray(),
-                            Retries = Enumerable.Range(-2, 100).Select(_ => RNG.Next(10)).ToArray(),
-                        },
-                    }
-                },
-                Ratings = Enumerable.Range(0, 11).Select(_ => RNG.Next(10)).ToArray(),
-                Status = BeatmapOnlineStatus.Ranked
-            };
+                            FailTimes = new APIFailTimes
+                            {
+                                Fails = Enumerable.Range(1, 100).Select(_ => RNG.Next(10)).ToArray(),
+                                Retries = Enumerable.Range(-2, 100).Select(_ => RNG.Next(10)).ToArray(),
+                            },
+                        }
+                    },
+                    Rating = ratings.Average(),
+                    Ratings = ratings,
+                    Status = BeatmapOnlineStatus.Ranked
+                };
+            }
         }
 
         private partial class RatingsExposingDetails : Details

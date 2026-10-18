@@ -79,6 +79,7 @@ namespace osu.Game.Tests.Visual.Online
                     Ranked = DateTime.Now,
                     BPM = 111,
                     HasVideo = true,
+                    Rating = 5,
                     Ratings = Enumerable.Range(0, 11).ToArray(),
                     HasStoryboard = true,
                     Covers = new BeatmapSetOnlineCovers(),

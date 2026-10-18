@@ -33,7 +33,7 @@ namespace osu.Game.Overlays.BeatmapSet
             {
                 if (value == beatmapSet) return;
 
-                basic.BeatmapSet = preview.BeatmapSet = beatmapSet = value;
+                basic.BeatmapSet = preview.BeatmapSet = Ratings.BeatmapSet = beatmapSet = value;
 
                 if (IsLoaded)
                     updateDisplay();
@@ -110,7 +110,6 @@ namespace osu.Game.Overlays.BeatmapSet
 
         private void updateDisplay()
         {
-            Ratings.Ratings = BeatmapSet?.Ratings;
             ratingBox.Alpha = BeatmapSet?.Status > 0 ? 1 : 0;
             advanced.Ruleset.Value = rulesets.GetRuleset(beatmapInfo?.Ruleset.OnlineID ?? 0);
         }

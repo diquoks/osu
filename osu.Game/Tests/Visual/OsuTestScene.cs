@@ -301,6 +301,7 @@ namespace osu.Game.Tests.Visual
                 FavouriteCount = 456,
                 Submitted = DateTime.Now,
                 Ranked = DateTime.Now,
+                Rating = 5,
                 Ratings = Enumerable.Range(0, 11).ToArray(),
                 RelatedTags =
                 [
