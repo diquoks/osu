@@ -181,14 +181,14 @@ Click to see what's new!", version);
         public static LocalisableString ReadingCollections => new TranslatableString(getKey(@"reading_collections"), @"Reading collections...");
 
         /// <summary>
-        /// "Imported {0} collections"
+        /// "Imported {0} collection|Imported {0} collections"
         /// </summary>
-        public static LocalisableString CollectionsImportProgress(int count) => new TranslatableString(getKey(@"collections_import_progress"), @"Imported {0} collections", count);
+        public static LocalisableString CollectionsImportProgress(int count) => new PluralisableString(new TranslatableString(getKey(@"collections_import_progress"), @"Imported {0} collection|Imported {0} collections", count), count, '|');
 
         /// <summary>
-        /// "Imported {0} of {1} collections"
+        /// "Imported {0} of {1} collection|Imported {0} of {1} collections"
         /// </summary>
-        public static LocalisableString CollectionsImportProgressTotal(int count, int totalCount) => new TranslatableString(getKey(@"collections_import_progress_total"), @"Imported {0} of {1} collections", count, totalCount);
+        public static LocalisableString CollectionsImportProgressTotal(int count, int totalCount) => new PluralisableString(new TranslatableString(getKey(@"collections_import_progress_total"), @"Imported {0} of {1} collection|Imported {0} of {1} collections", count, totalCount), totalCount, '|');
 
         /// <summary>
         /// "This error has been automatically reported to the dev team."
