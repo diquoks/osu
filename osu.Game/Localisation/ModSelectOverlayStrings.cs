@@ -15,9 +15,9 @@ namespace osu.Game.Localisation
         public static LocalisableString ModSelectTitle => new TranslatableString(getKey(@"mod_select_title"), @"Mod Select");
 
         /// <summary>
-        /// "{0} mods"
+        /// "{0} mod|{0} mods"
         /// </summary>
-        public static LocalisableString Mods(int count) => new TranslatableString(getKey(@"mods"), @"{0} mods", count);
+        public static LocalisableString Mods(int count) => new PluralisableString(new TranslatableString(getKey(@"mods"), @"{0} mod|{0} mods", count), count, '|');
 
         /// <summary>
         /// "all mods"
