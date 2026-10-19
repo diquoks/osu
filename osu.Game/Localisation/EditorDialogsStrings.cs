@@ -70,9 +70,9 @@ namespace osu.Game.Localisation
         public static LocalisableString SoundsGood => new TranslatableString(getKey(@"sounds_good"), @"Sounds good, let's go!");
 
         /// <summary>
-        /// "Difficulty &quot;{0}&quot; with {1} objects"
+        /// "Difficulty &quot;{0}&quot; with {1} object|Difficulty &quot;{0}&quot; with {1} objects"
         /// </summary>
-        public static LocalisableString DeleteDifficultyDetails(string difficultyName, int objectCount) => new TranslatableString(getKey(@"delete_difficulty_details"), @"Difficulty ""{0}"" with {1} objects", difficultyName, objectCount);
+        public static LocalisableString DeleteDifficultyDetails(string difficultyName, int objectCount) => new PluralisableString(new TranslatableString(getKey(@"delete_difficulty_details"), @"Difficulty ""{0}"" with {1} object|Difficulty ""{0}"" with {1} objects", difficultyName, objectCount), objectCount, '|');
 
         /// <summary>
         /// "This overwrites artist, title, source, and tags on all other difficulties. This cannot be undone."
