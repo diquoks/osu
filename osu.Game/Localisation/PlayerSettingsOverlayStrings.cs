@@ -20,14 +20,14 @@ namespace osu.Game.Localisation
         public static LocalisableString StepForward => new TranslatableString(getKey(@"step_forward_frame"), @"Step forward one frame");
 
         /// <summary>
-        /// "Seek backward {0} seconds"
+        /// "Seek backward {0} second|Seek backward {0} seconds"
         /// </summary>
-        public static LocalisableString SeekBackwardSeconds(double arg0) => new TranslatableString(getKey(@"seek_backward_seconds"), @"Seek backward {0} seconds", arg0);
+        public static LocalisableString SeekBackwardSeconds(int amount) => new PluralisableString(new TranslatableString(getKey(@"seek_backward_seconds"), @"Seek backward {0} second|Seek backward {0} seconds", amount), amount, '|');
 
         /// <summary>
-        /// "Seek forward {0} seconds"
+        /// "Seek forward {0} second|Seek forward {0} seconds"
         /// </summary>
-        public static LocalisableString SeekForwardSeconds(double arg0) => new TranslatableString(getKey(@"seek_forward_seconds"), @"Seek forward {0} seconds", arg0);
+        public static LocalisableString SeekForwardSeconds(int amount) => new PluralisableString(new TranslatableString(getKey(@"seek_forward_seconds"), @"Seek forward {0} second|Seek forward {0} seconds", amount), amount, '|');
 
         /// <summary>
         /// "Playback speed"
