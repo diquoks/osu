@@ -283,14 +283,14 @@ Click to see what's new!", version);
         public static LocalisableString MultiplayerServerShuttingDownRemaining(string remainingTime) => new TranslatableString(getKey(@"multiplayer_server_shutting_down_remaining"), @"The multiplayer server is restarting in {0}.", remainingTime);
 
         /// <summary>
-        /// "Created new collection &quot;{0}&quot; with {1} beatmaps."
+        /// "Created new collection &quot;{0}&quot; with {1} beatmap.|Created new collection &quot;{0}&quot; with {1} beatmaps."
         /// </summary>
-        public static LocalisableString CollectionCreated(string name, int beatmapsCount) => new TranslatableString(getKey(@"collection_created"), @"Created new collection ""{0}"" with {1} beatmaps.", name, beatmapsCount);
+        public static LocalisableString CollectionCreated(string name, int beatmapsCount) => new PluralisableString(new TranslatableString(getKey(@"collection_created"), @"Created new collection ""{0}"" with {1} beatmap.|Created new collection ""{0}"" with {1} beatmaps.", name, beatmapsCount), beatmapsCount, '|');
 
         /// <summary>
-        /// "Added {0} beatmaps to collection &quot;{1}&quot;."
+        /// "Added {0} beatmap to collection &quot;{1}&quot;.|Added {0} beatmaps to collection &quot;{1}&quot;."
         /// </summary>
-        public static LocalisableString CollectionBeatmapsAdded(string name, int beatmapsCount) => new TranslatableString(getKey(@"collection_beatmaps_added"), @"Added {0} beatmaps to collection ""{1}"".", beatmapsCount, name);
+        public static LocalisableString CollectionBeatmapsAdded(string name, int beatmapsCount) => new PluralisableString(new TranslatableString(getKey(@"collection_beatmaps_added"), @"Added {0} beatmap to collection ""{1}"".|Added {0} beatmaps to collection ""{1}"".", beatmapsCount, name), beatmapsCount, '|');
 
         private static string getKey(string key) => $@"{prefix}:{key}";
     }
