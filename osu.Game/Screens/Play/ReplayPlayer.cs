@@ -30,8 +30,6 @@ namespace osu.Game.Screens.Play
     [Cached]
     public partial class ReplayPlayer : Player, IKeyBindingHandler<GlobalAction>
     {
-        public const double BASE_SEEK_AMOUNT = 1000;
-
         private readonly Func<IBeatmap, IReadOnlyList<Mod>, Score> createScore;
 
         [Cached(typeof(IGameplayLeaderboardProvider))]
@@ -222,7 +220,7 @@ namespace osu.Game.Screens.Play
 
         public void SeekInDirection(float amount)
         {
-            double target = Math.Clamp(GameplayClockContainer.CurrentTime + amount * BASE_SEEK_AMOUNT, 0, GameplayState.Beatmap.GetLastObjectTime());
+            double target = Math.Clamp(GameplayClockContainer.CurrentTime + amount * 1000, 0, GameplayState.Beatmap.GetLastObjectTime());
 
             Seek(target);
         }

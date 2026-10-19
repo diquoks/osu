@@ -72,7 +72,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
                                     Origin = Anchor.Centre,
                                     Icon = FontAwesome.Solid.FastBackward,
                                     Action = () => replayPlayer.SeekInDirection(-10),
-                                    TooltipText = PlayerSettingsOverlayStrings.SeekBackwardSeconds(10 * ReplayPlayer.BASE_SEEK_AMOUNT / 1000),
+                                    TooltipText = PlayerSettingsOverlayStrings.SeekBackwardSeconds(10),
                                 },
                                 new SeekButton
                                 {
@@ -80,7 +80,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
                                     Origin = Anchor.Centre,
                                     Icon = FontAwesome.Solid.Backward,
                                     Action = () => replayPlayer.SeekInDirection(-1),
-                                    TooltipText = PlayerSettingsOverlayStrings.SeekBackwardSeconds(ReplayPlayer.BASE_SEEK_AMOUNT / 1000),
+                                    TooltipText = PlayerSettingsOverlayStrings.SeekBackwardSeconds(1),
                                 },
                                 new SeekButton
                                 {
@@ -118,7 +118,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
                                     Origin = Anchor.Centre,
                                     Icon = FontAwesome.Solid.Forward,
                                     Action = () => replayPlayer.SeekInDirection(1),
-                                    TooltipText = PlayerSettingsOverlayStrings.SeekForwardSeconds(ReplayPlayer.BASE_SEEK_AMOUNT / 1000),
+                                    TooltipText = PlayerSettingsOverlayStrings.SeekForwardSeconds(1),
                                 },
                                 new SeekButton
                                 {
@@ -126,7 +126,7 @@ namespace osu.Game.Screens.Play.PlayerSettings
                                     Origin = Anchor.Centre,
                                     Icon = FontAwesome.Solid.FastForward,
                                     Action = () => replayPlayer.SeekInDirection(10),
-                                    TooltipText = PlayerSettingsOverlayStrings.SeekForwardSeconds(10 * ReplayPlayer.BASE_SEEK_AMOUNT / 1000),
+                                    TooltipText = PlayerSettingsOverlayStrings.SeekForwardSeconds(10),
                                 },
                             },
                         },
