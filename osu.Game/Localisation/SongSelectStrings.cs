@@ -160,9 +160,9 @@ namespace osu.Game.Localisation
         public static LocalisableString RestoreAllHidden => new TranslatableString(getKey(@"restore_all_hidden"), @"Restore all hidden");
 
         /// <summary>
-        /// "{0} stars"
+        /// "{0:N1} stars"
         /// </summary>
-        public static LocalisableString Stars(LocalisableString value) => new TranslatableString(getKey(@"stars"), @"{0} stars", value);
+        public static LocalisableString Stars(double value) => new TranslatableString(getKey(@"stars"), @"{0:N1} stars", value);
 
         /// <summary>
         /// "Sort"

@@ -5,7 +5,6 @@ using System;
 using System.Linq;
 using osu.Framework.Allocation;
 using osu.Framework.Extensions.Color4Extensions;
-using osu.Framework.Extensions.LocalisationExtensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Colour;
 using osu.Framework.Graphics.Containers;
@@ -133,7 +132,7 @@ namespace osu.Game.Screens.Select
                         if (Current.IsDefault && isUpper)
                             return UserInterfaceStrings.NoLimit;
 
-                        return SongSelectStrings.Stars(Current.Value.ToLocalisableString(@"0.##"));
+                        return SongSelectStrings.Stars(Current.Value);
                     }
                 }
 
