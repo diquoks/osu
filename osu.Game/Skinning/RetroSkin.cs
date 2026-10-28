@@ -42,9 +42,19 @@ namespace osu.Game.Skinning
             )
         {
             Configuration.ConfigDictionary[@"SliderBallFlip"] = "0";
+            Configuration.ConfigDictionary[@"CursorRotate"] = "1";
+            Configuration.ConfigDictionary[@"CursorExpand"] = "1";
+            Configuration.ConfigDictionary[@"CursorCentre"] = "1";
             Configuration.ConfigDictionary[@"SliderBallFrames"] = "10";
+            Configuration.ConfigDictionary[@"HitCircleOverlayAboveNumber"] = "1";
+            Configuration.ConfigDictionary[@"SpinnerFrequencyModulate"] = "1";
+            Configuration.ConfigDictionary[@"LayeredHitSounds"] = "1";
+            Configuration.ConfigDictionary[@"SpinnerFadePlayfield"] = "1";
+            Configuration.ConfigDictionary[@"SpinnerNoBlink"] = "0";
             Configuration.ConfigDictionary[@"AllowSliderBallTint"] = "0";
             Configuration.ConfigDictionary[@"CursorTrailRotate"] = "0";
+            Configuration.ConfigDictionary[@"ComboBurstRandom"] = "0";
+            Configuration.ConfigDictionary[@"SliderStyle"] = "1";
             Configuration.ConfigDictionary[@"Version"] = "1";
 
             Configuration.CustomComboColours =
@@ -54,10 +64,25 @@ namespace osu.Game.Skinning
                 new Color4(5, 5, 240, 255),
                 new Color4(240, 5, 5, 255)
             ];
+            Configuration.CustomColours[@"MenuGlow"] = new Color4(255, 255, 255, 255);
+            Configuration.CustomColours[@"SliderBall"] = new Color4(255, 255, 255, 255);
+            Configuration.CustomColours[@"SliderBorder"] = new Color4(255, 255, 255, 255);
+            Configuration.CustomColours[@"SpinnerApproachCircle"] = new Color4(77, 139, 217, 255);
+            Configuration.CustomColours[@"SongSelectActiveText"] = new Color4(0, 0, 0, 255);
+            Configuration.CustomColours[@"SongSelectInactiveText"] = new Color4(255, 255, 255, 255);
+            Configuration.CustomColours[@"StarBreakAdditive"] = new Color4(255, 182, 193, 255);
+            Configuration.CustomColours[@"InputOverlayText"] = new Color4(0, 0, 0, 255);
 
+            Configuration.ConfigDictionary[@"HitCirclePrefix"] = @"default";
             Configuration.ConfigDictionary[@"HitCircleOverlap"] = "3";
+            Configuration.ConfigDictionary[@"ScorePrefix"] = @"score";
+            Configuration.ConfigDictionary[@"ComboPrefix"] = @"score";
             Configuration.ConfigDictionary[@"ScoreOverlap"] = "3";
             Configuration.ConfigDictionary[@"ComboOverlap"] = "3";
+
+            Configuration.CustomColours[@"HyperDash"] = new Color4(255, 0, 0, 255);
+            Configuration.CustomColours[@"HyperDashAfterImage"] = new Color4(255, 0, 0, 255);
+            Configuration.CustomColours[@"HyperDashFruit"] = new Color4(255, 0, 0, 255);
         }
 
         public override Texture? GetTexture(string componentName, WrapMode wrapModeS, WrapMode wrapModeT)
