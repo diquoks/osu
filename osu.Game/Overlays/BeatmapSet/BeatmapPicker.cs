@@ -23,7 +23,6 @@ using osu.Game.Graphics.Sprites;
 using osu.Game.Online.API.Requests.Responses;
 using osu.Game.Resources.Localisation.Web;
 using osu.Game.Rulesets;
-using osu.Game.Utils;
 using osuTK;
 
 namespace osu.Game.Overlays.BeatmapSet
@@ -33,6 +32,7 @@ namespace osu.Game.Overlays.BeatmapSet
         private const float tile_icon_padding = 7;
         private const float tile_spacing = 2;
 
+        private readonly StarRatingDisplay starRatingDisplay;
         private readonly LinkFlowContainer infoContainer;
         private readonly Statistic nominations, plays, favourites;
 
@@ -53,9 +53,6 @@ namespace osu.Game.Overlays.BeatmapSet
                 updateDisplay();
             }
         }
-
-        [Resolved]
-        private OsuColour colours { get; set; } = null!;
 
         public BeatmapPicker()
         {
@@ -91,15 +88,26 @@ namespace osu.Game.Overlays.BeatmapSet
                                 Difficulties = new DifficultiesContainer
                                 {
                                     AutoSizeAxes = Axes.Both,
-                                    OnLostHover = () => showBeatmap(Beatmap.Value, withStarRating: false),
+                                    OnLostHover = () => showBeatmap(Beatmap.Value),
                                 },
                             }
                         },
-                        infoContainer = new LinkFlowContainer(t => t.Font = OsuFont.GetFont(weight: FontWeight.Bold, size: 11))
+                        new FillFlowContainer
                         {
                             RelativeSizeAxes = Axes.X,
                             AutoSizeAxes = Axes.Y,
-                            TextAnchor = Anchor.BottomLeft,
+                            Spacing = new Vector2(5f),
+                            Direction = FillDirection.Horizontal,
+                            Children = new Drawable[]
+                            {
+                                starRatingDisplay = new StarRatingDisplay(default, StarRatingDisplaySize.Small),
+                                infoContainer = new LinkFlowContainer(t => t.Font = OsuFont.GetFont(weight: FontWeight.Bold, size: 11))
+                                {
+                                    RelativeSizeAxes = Axes.X,
+                                    AutoSizeAxes = Axes.Y,
+                                    TextAnchor = Anchor.BottomLeft,
+                                },
+                            }
                         },
                         new FillFlowContainer
                         {
@@ -126,7 +134,7 @@ namespace osu.Game.Overlays.BeatmapSet
 
             Beatmap.ValueChanged += b =>
             {
-                showBeatmap(b.NewValue, withStarRating: Difficulties.Any(d => d.IsHovered));
+                showBeatmap(b.NewValue);
                 updateDifficultyButtons();
             };
         }
@@ -170,10 +178,7 @@ namespace osu.Game.Overlays.BeatmapSet
                                                             .Select(b => new DifficultySelectorButton(b, b.Convert ? new RulesetInfo { OnlineID = 0 } : null)
                                                             {
                                                                 State = DifficultySelectorState.NotSelected,
-                                                                OnHovered = beatmap =>
-                                                                {
-                                                                    showBeatmap(beatmap, withStarRating: true);
-                                                                },
+                                                                OnHovered = showBeatmap,
                                                                 OnClicked = beatmap => { Beatmap.Value = beatmap; },
                                                             });
             }
@@ -200,8 +205,11 @@ namespace osu.Game.Overlays.BeatmapSet
             updateDifficultyButtons();
         }
 
-        private void showBeatmap(APIBeatmap? beatmapInfo, bool withStarRating)
+        private void showBeatmap(APIBeatmap? beatmapInfo)
         {
+            if (beatmapInfo != null)
+                starRatingDisplay.Current.Value = new StarDifficulty(beatmapInfo.StarRating, beatmapInfo.MaxCombo ?? 0);
+
             infoContainer.Clear();
 
             infoContainer.AddText(beatmapInfo?.DifficultyName ?? string.Empty, s => s.Font = OsuFont.GetFont(size: 17, weight: FontWeight.Bold));
@@ -249,18 +257,6 @@ namespace osu.Game.Overlays.BeatmapSet
                         break;
                     }
                 }
-            }
-
-            if (withStarRating)
-            {
-                infoContainer.AddArbitraryDrawable(Empty().With(e => e.Width = 5));
-                infoContainer.AddText(
-                    LocalisableString.Interpolate($"{BeatmapsetsStrings.ShowStatsStars} {beatmapInfo?.StarRating.FormatStarRating()}"),
-                    t =>
-                    {
-                        t.Font = OsuFont.GetFont(size: 11, weight: FontWeight.Bold);
-                        t.Colour = colours.Yellow;
-                    });
             }
         }
 
