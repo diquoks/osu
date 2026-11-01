@@ -35,6 +35,7 @@ namespace osu.Game.Overlays.BeatmapSet
             MetadataSectionGenre genre;
             MetadataSectionLanguage language;
             MetadataSectionMapperTags mapperTags;
+            MetadataSectionPackTags packTags;
             SuccessRate successRate;
 
             RelativeSizeAxes = Axes.X;
@@ -86,6 +87,7 @@ namespace osu.Game.Overlays.BeatmapSet
                                     language = new MetadataSectionLanguage { Width = 0.5f },
                                     userTags = new MetadataSectionUserTags(),
                                     mapperTags = new MetadataSectionMapperTags(),
+                                    packTags = new MetadataSectionPackTags(),
                                 },
                             },
                         },
@@ -120,6 +122,7 @@ namespace osu.Game.Overlays.BeatmapSet
                 language.Metadata = b.NewValue?.Language ?? new BeatmapSetOnlineLanguage { Id = (int)SearchLanguage.Unspecified };
                 updateUserTags();
                 mapperTags.Metadata = b.NewValue?.Tags ?? string.Empty;
+                packTags.Metadata = b.NewValue?.PackTags ?? Array.Empty<string>();
             });
             Beatmap.BindValueChanged(b =>
             {

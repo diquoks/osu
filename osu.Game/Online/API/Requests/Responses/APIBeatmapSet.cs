@@ -58,6 +58,9 @@ namespace osu.Game.Online.API.Requests.Responses
         [JsonProperty(@"last_updated")]
         public DateTimeOffset? LastUpdated { get; set; }
 
+        [JsonProperty(@"pack_tags")]
+        public string[]? PackTags { get; set; }
+
         [JsonProperty("rating")]
         public double Rating { get; set; }
 

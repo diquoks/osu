@@ -8,6 +8,9 @@ namespace osu.Game.Overlays.BeatmapSet
 {
     public enum MetadataType
     {
+        [LocalisableDescription(typeof(BeatmapsetsStrings), nameof(BeatmapsetsStrings.ShowInfoPackTags))]
+        PackTags,
+
         [LocalisableDescription(typeof(BeatmapsetsStrings), nameof(BeatmapsetsStrings.ShowInfoUserTags))]
         UserTags,
 
